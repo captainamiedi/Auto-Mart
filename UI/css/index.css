@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,500,700');
+
+body{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin: 0 auto;
+}
+/* HEADER SECTION */
+header{
+    background-color: #333333;
+}
+div a{
+    text-decoration: none;
+    color: #99FA9C;
+    padding-right: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+div.container{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.auto{
+    padding-top: 15px;
+}
+.carousel h3{
+    position: absolute;
+    top: 90px;
+    left: 35%;
+    text-transform: uppercase;
+    color: forestgreen;
+    font-style: italic;
+}
+
+nav{
+    list-style: none;
+}
+nav li {
+    display: inline-flex;
+    padding: 0px 10px;
+}
+/*button.sell{
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+button.Reg{
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+button.Sign{
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+* {box-sizing: border-box}
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+
+
+/* Set a style for all buttons */
+ nav  li button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+.carousel{
+    height: auto;
+    text-align: center;
+    padding: 10px;
+}
+.carousel img{
+    width: 90%;
+    height: auto;
+    position: relative;
+    opacity: 0.7;
+}
+
+/* SEARCH */
+.search{
+    padding: 10px;
+    text-align: center;  
+}
+.search .search-bar{
+    width: 100%;
+    height: auto;
+}
+.search input{
+    width: 50%;
+    height: 30px;
+    border-radius: 4px;
+    box-shadow: 2px;
+}
+.search button {
+    width: 10%;
+    padding: 5px;
+    background: #4CAF50;
+    color: white;
+    font-size: 14px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+  
+.search button:hover {
+    background: #0b7dda;
+}
+/* VIEW CARS*/
+.view-cars{
+    height: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+/*.column {
+    float: left;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+.column1 {
+    float: left;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+.column2 {
+    float: right;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}*/
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.view-container {
+    padding: 0 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.view-container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.price {
+    color: grey;
+    font-size: 22px;
+}
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+  
+.button:hover {
+    background-color: #555;
+}
+.view-cars img{
+    width: 90%;
+    height: 200px;
+}
+.price {
+    color: grey;
+    font-size: 22px;
+  }
+.view-cars .card button:hover {
+    opacity: 0.7;
+  }
+.view-cars .card button:hover {
+    opacity: 0.7;
+  }
+.view-cars .card button:hover {
+    opacity: 0.7;
+  }
+.view-cars img{
+    width: 90%;
+    height: 200px;
+}
+.view-cars button{
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.row{
+    text-align: center;
+}
+.btn-view-all{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.btn-view-all button{
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 10px;
+    border-radius: 4px
+}
+.btn-view-all button:hover{
+    background-color: #333333;
+    opacity: 0.7;
+}
+.footer-content{
+   background: #333333;
+   color: #fff;
+   width: 100%;
+   height: auto;
+   padding-top: 10px;
+   text-align: center;
+}

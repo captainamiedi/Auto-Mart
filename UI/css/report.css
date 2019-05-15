@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,500,700,800');
+body{
+    margin: 0 auto;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+header{
+  background-color: #333333;
+}
+div a{
+  text-decoration: none;
+  color: #99FA9C;
+  padding-right: 80px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+div.header-container{
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.auto{
+  padding-top: 15px;
+}
+nav{
+  list-style: none;
+}
+nav li {
+  display: inline-flex;
+  padding: 0px 10px;
+}
+nav  li button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+h2{
+  text-align: center;
+}
+input[type=text], select, textarea {
+    width: 50%; 
+    padding: 12px;  
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px;
+    resize: vertical;
+}
+button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=email] {
+    width: 50%; 
+    padding: 12px;  
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  label {
+    padding:10px 60px 10px 10px;
+    color:#999999;
+    font-weight:bold;
+    display:inline-block;
+    width:100px;
+    text-align: left;
+}
+.comment label{
+  padding:10px 60px 10px 10px;
+    color:#999999;
+    font-weight:bold;
+    display:inline-block;
+    width:100px;
+    text-align: left;
+    vertical-align: top;
+}
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 45px;
+    text-align: center;
+  }
+  .footer-content{
+    background: #333333;
+    color: #fff;
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+    text-align: center;
+ }

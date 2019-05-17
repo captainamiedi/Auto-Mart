@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+body{
+    background: white;
+    background-image: url(../images/need2.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 440px;
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+.form .head{
+    display: flex;
+    width: 100%;
+    height: 55px;
+}
+.form .head > div {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 22px;
+    line-height: 55px;
+    cursor: pointer;
+    background: transparent;
+}
+.form .head .signup > div:nth-child(1), .form .head > div:nth-child(2){
+    background: rgb(206, 204, 204);
+    transition: all .3s ease-in-out;
+}
+.form .head .signup > div:nth-child(2){
+    background: transparent !important;
+    transition: all .3s ease-in-out;
+}
+.form .body{
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+.form .body > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+}
+.form .body .form-row{
+    border-top: 1px solid #ccc;
+    position: relative;
+}
+.form .body .form-row i.fas.fa-envelope{
+    position: absolute;
+    top: 25px;
+    left: 20px;
+}
+.form .body .form-row i.fas.fa-key{
+    position: absolute;
+    top: 77px;
+    left: 20px;
+}
+.form .body .form-row input{
+    border: none;
+    outline: none;
+    height: 25px;
+    width: 95%;
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 18px;
+    border-bottom: 2px solid #111;
+    text-indent: 38px;
+    padding: 20px;
+}
+.admin{
+    padding-top: 50px;
+    text-align: left;
+}
+.admin p a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+.form .body .form-row input:focus{
+    border-bottom: 2px solid #5DD9CB;
+    transition: all .2s ease-in-out; 
+}
+.form .body .form-row button{
+    width: 40%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: #4CAF50;
+    margin-left: 30%;
+    margin-top: 10px;
+    height: 45px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+.form .body .span{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    position: relative;
+    color: lightgreen;
+    font-weight: bold;
+}
+.footer{
+    position: absolute;
+    width: 70%;
+    font-size: 22px;
+    padding-left: 180px;
+}
+.footer > div.social{
+    position: relative;
+    float: left;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+.footer i{
+    position: relative;
+    width: 60px;
+    height: 40px;
+    left: 0px;
+    line-height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+
+}
+.footer .facebook{
+    background: #3b5999;
+}
+.footer .google{
+    background: #dd4b39;
+}
+.form-row > i .fa{
+    position: relative;
+    top: 23px;
+    left: 10px;
+    font-size: 25px;
+    color: #11074e;
+}
+.form .body > div.login{
+    left: 0%;
+}
+.form .body > div.signup{
+    left: 100%;
+}
+.form .body.active > div.login{
+    left: -100%;
+}
+.form .body.active > div.signup{
+    left: 0%;
+}
+.form .body .signup .form-row button{
+    background: #4CAF50;
+}

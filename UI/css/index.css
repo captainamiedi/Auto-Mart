@@ -8,7 +8,7 @@ body{
 header{
     background-color: #333333;
 }
-div a{
+div .auto a{
     text-decoration: none;
     color: #99FA9C;
     padding-right: 80px;
@@ -18,10 +18,11 @@ div a{
 div.container{
     padding: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .auto{
     padding-top: 15px;
+    padding-left: 50px;
 }
 .carousel h3{
     position: absolute;
@@ -38,6 +39,13 @@ nav{
 nav li {
     display: inline-flex;
     padding: 0px 10px;
+}
+nav li a {
+    text-decoration: none;
+    color: #99FA9C;
+    padding-right: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 /*button.sell{
     padding: 5px 10px;

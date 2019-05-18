@@ -17,10 +17,11 @@ div .auto a {
 div.header-container{
     padding: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .auto{
     padding-top: 15px;
+    padding-left: 50px;
 }
 nav{
     list-style: none;

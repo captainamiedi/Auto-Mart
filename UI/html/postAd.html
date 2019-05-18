@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/postAd.css">
+    <title>free-ads</title>
+</head>
+<body>
+    <div class="container">
+            <header>
+                    <div class="header-container">
+                                <div class="auto">
+                                    <a href="../html/index.html">AutoMart.com</a>
+                                </div>
+                                <nav>
+                                    <li><a href="">Sell A Car</a></li>
+                                    <li><a href="../html/signup.html" id="button"><button class="Sign">Sign in</button></a></li>
+                                </nav>
+                            </div>
+                    </header>
+        <div class="car-details">
+            <p class="sell">sell your vehicle</p>
+            <h3>Your Car Details</h3>
+            <form action="">
+                <div class="name">
+                        <label for="">make</label>
+                        <input type="text" placeholder="car make">
+                </div>
+                <div class="model">
+                        <label for="">model</label>
+                        <input type="text" placeholder="model">
+                </div>
+                <div class="man">
+                    <label for="">manufacturer</label>
+                    <input type="text" placeholder="manufacturer">
+                </div>
+                <div class="condition">
+                    <label for="">condition</label>
+                    <input type="text" placeholder="condtion of your vehicle">
+                </div>
+                <div class="price">
+                    <label for="">price</label>
+                    <input type="text" placeholder="price">
+                </div>
+            </form>
+        </div>
+        <div class="pictures">
+            <h3>Your Pictures</h3>
+            <label>Upload Your Pictures</label>
+            <div class="upload">
+                <input id="filesToUpload" type="file"  hidden="hidden">
+                <button id="btn-upload">CHOOSE A FILE</button>
+                <button class="btn-upload">Upload</button>
+                <span id="upload-text">No file choose, yet</span>
+            </div>
+            <div class="upload">
+                <input type="file" name="" id="filesToUpload" hidden="hidden">
+                <button id="btn-upload">CHOOSE A FILE</button>
+                <button class="btn-upload">Upload</button>
+                <span id="upload-text">No file choose, yet</span>
+            </div>
+                <div class="upload">
+                    <input id="filesToUpload" type="file"  hidden="hidden">
+                    <button id="btn-upload">CHOOSE A FILE</button>
+                    <button class="btn-upload">Upload</button>
+                    <span id="upload-text">No file choose, yet</span>
+                </div>
+                <div class="upload">
+                    <input id="filesToUpload" type="file"  hidden="hidden">
+                    <button id="btn-upload">CHOOSE A FILE</button>
+                    <button class="btn-upload">Upload</button>
+                    <span id="upload-text">No file choose, yet</span>
+                </div>
+        </div>
+        <div class="contact">
+            <h4>Contact</h4>
+            <form action="">
+                <div class="name">
+                    <label for="">Name</label>
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="location">
+                    <label for="">Location</label>
+                    <input type="text" placeholder="Location">
+                </div>
+                <div class="number"></div>
+                    <label for="">Phone Number</label>
+                    <input type="text" placeholder="Phone Number">
+                </div>
+            </form>
+    </div>
+        <div class="submit">
+            <button class="btn-submit">submit</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>AutoMart &copy;2019 <span>All Rights Reserved</span></p>
+        </div>
+    </footer>
+    <script>
+        const fileBtn = document.getElementById('filesToUpload');
+        const uploadBtn = document.getElementById('btn-upload');
+        const uploadTxt = document.getElementById('upload-text');
+        
+        uploadBtn.addEventListener('click', function(){
+            fileBtn.click();
+        });
+        fileBtn.addEventListener('change', function(){
+            if(fileBtn.value){
+                uploadTxt.innerHTML = fileBtn.value.match( /[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            }else{
+                uploadTxt.innerHTML = "No file choden, yet";
+            }
+        });
+    </script>
+</body>
+</html>

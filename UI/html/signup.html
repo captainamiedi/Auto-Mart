@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signup/login</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+    <div class="form">
+        <div class="head" class="signup">
+            <div onClick="swap(this);" data-tab="login" class="login-tab">
+                LOGIN
+            </div>
+            <div onClick="swap(this);" data-tab="signup" class="signup-tab">
+                    SIGNUP
+            </div>
+        </div>
+        <div class="body" id="form-body">
+            <div class="login">
+                <div class="form-row">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <input type="text" placeholder="Email">
+                    <i class="fas fa-key" aria-hidden="true"></i>
+                    <input type="password" placeholder="Password">
+                    <button>Login</button>
+                </div>
+                <div class="span">
+                    <span>OR</span>
+                </div>
+                <div class="footer">
+                    Login with
+                    <div class="social google">
+                        <i class="fab fa-google-plus-g" aria-hidden="true"></i>
+                    </div>
+                    <div class="social facebook">
+                        <i class="fab fa-facebook-square" aria-hidden="true"></i>
+                    </div>
+                    <div class="admin">
+                        <p><a href="../html/admin.html">I am an Admin</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="signup">
+                <div class="form-row">
+                    <input type="username" placeholder="Username">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Re-type Password">
+                    <button>Signup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    function swap (referTo){
+        console.log(referTo, 'referTo----')
+        if(referTo.getAttribute("data-tab") == "login"){
+            document.getElementById('form-body').classList.remove('active');
+            referTo.parentNode.classList.remove('signup');
+        }
+        else{
+            document.getElementById('form-body').classList.add('active');
+            referTo.parentNode.classList.add('signup');
+        }
+    }
+    </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ body{
 header{
     background-color: #333333;
 }
-div a{
+div .auto a{
     text-decoration: none;
     color: #99FA9C;
     padding-right: 80px;
@@ -38,6 +38,13 @@ nav{
 nav li {
     display: inline-flex;
     padding: 0px 10px;
+}
+nav li a {
+    text-decoration: none;
+    color: #99FA9C;
+    padding-right: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 /*button.sell{
     padding: 5px 10px;
@@ -85,14 +92,15 @@ button:hover {
 }
 .carousel{
     height: auto;
-    text-align: center;
-    padding: 10px;
+    text-align: center;;
+    padding: 0 10px 10px 10px;
 }
 .carousel img{
-    width: 90%;
     height: auto;
     position: relative;
     opacity: 0.7;
+    object-fit: cover;
+    width: 100%;
 }
 
 /* SEARCH */
@@ -102,13 +110,19 @@ button:hover {
 }
 .search .search-bar{
     width: 100%;
-    height: auto;
+    background: transparent;
+    background-color: rgba(0,0,0,.2);
+    height: 100px;
+    background-size: cover;
+
 }
 .search input{
+    transform: translate(0%, 70%);
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 17px;
     width: 50%;
     height: 30px;
-    border-radius: 4px;
-    box-shadow: 2px;
 }
 .search button {
     width: 10%;
@@ -117,8 +131,10 @@ button:hover {
     color: white;
     font-size: 14px;
     border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
+    border-left: none;
     cursor: pointer;
+    transform: translate(-5%, 74%);
+    padding: 12px;
 }
   
 .search button:hover {
@@ -129,7 +145,7 @@ button:hover {
     height: auto;
     padding: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 /*.column {
     float: left;
@@ -152,6 +168,7 @@ button:hover {
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px 5px 0 5px;
 }
 .view-container {
     padding: 0 16px;
@@ -166,7 +183,7 @@ button:hover {
     color: grey;
     font-size: 22px;
 }
-.button {
+/*button {
     border: none;
     outline: 0;
     display: inline-block;
@@ -176,14 +193,24 @@ button:hover {
     text-align: center;
     cursor: pointer;
     width: 100%;
-}
+}*/
   
 .button:hover {
     background-color: #555;
 }
-.view-cars img{
-    width: 90%;
-    height: 200px;
+.btn-views a{
+    text-decoration: none;
+    color: #99FA9C;;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.card-img img{
+    object-fit: cover;
+    width: 100%;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+.card-img{
+    padding-top: 5px;
 }
 .price {
     color: grey;
@@ -209,6 +236,7 @@ button:hover {
     opacity: 0.8;
     padding: 10px;
     border-radius: 4px;
+    width: 100%;
 }
 
 
@@ -227,15 +255,22 @@ button:hover {
     padding: 10px;
     border-radius: 4px
 }
+.btn-view-all button a{
+    text-decoration: none;
+    color: #fff;
+}
 .btn-view-all button:hover{
     background-color: #333333;
     opacity: 0.7;
 }
 .footer-content{
-   background: #333333;
    color: #fff;
    width: 100%;
    height: auto;
    padding-top: 10px;
    text-align: center;
+}
+footer{
+    background: #000 none repeat scroll 0 0;
+    padding: 17px 10px 10px;
 }

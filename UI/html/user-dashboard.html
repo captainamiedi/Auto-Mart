@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/user-dashboard.css">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <div class="container-head">
+            <header>
+                <div class="header-container">
+                    <div class="auto">
+                        <a href="#">AutoMart.com</a>
+                    </div>
+                    <nav>
+                        <li><a href="">Sell A Car</a></li>
+                    </nav>
+                </div>
+            </header>
+    </div>
+    <div class="row">
+        <div class="column1">
+          <div class="card">
+              <div class="card-image">
+                  <img src="../images/img_avatar.png" alt="">
+              </div>
+              <div class="users-details">
+                  <h4>manage activities</h4>
+              </div>
+          </div>  
+        </div>
+        <div class="column2">
+            <h2>My Activities</h2>
+            <div class="table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/car2.jpg" alt=""></td>
+                        <td>BMW 8 Series Nigeria</td>
+                        <td><p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este.</p></td>
+                        <td>&#8358; 1,000,000</td>
+                        <td><a href="">Unsold</a></td>
+                        <td  id="modalBtn"><a href=""><i class="fas fa-edit"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/car3.jpg" alt=""></td>
+                        <td>BMW 8 Series Nigeria</td>
+                        <td><p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este.</p></td>
+                        <td>&#8358; 1,000,000</td>
+                        <td><a href="">Sold</a></td>
+                        <td><a href="" id="modalBtn"><i class="fas fa-edit"></i></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <form action="">
+                <h2>Edit</h2>
+                <label for="Status">New Status</label>
+                <input type="text" placeholder="Enter New Status">
+                <label for="price">New Price</label>
+                <input type="text" placeholder="Enter New Price">
+                <div class="submit">
+                    <button class="modal-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../html/view-more.js"></script>
+</body>
+</html>

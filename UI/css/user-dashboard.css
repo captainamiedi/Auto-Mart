@@ -80,7 +80,8 @@ table tr td img{
     vertical-align: middle;
 }
 table tr td a{
-    text-decoration: none;  
+    text-decoration: none;
+    color: #000;  
 }
 table{
     width: 100%;

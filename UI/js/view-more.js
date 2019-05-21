@@ -18,15 +18,10 @@ const modal = document.getElementById('simpleModal');
                 modal.style.display = 'none';
             }
         }
-
-const lastImg = 1;
-document.getElementById(0).src = document.getElementById(lastImg).src;
-document.getElementById(lastImg).className = "thumb selected";
-
-function preview(img) {
-    console.log(preview);
-    document.getElementById(lastImg).className = "thumb normal";
-    img.className = "thumb selected";
-    document.getElementById(0).src = img.src;
-    lastImg = img.id
+ 
+function changeImage(event){
+    const targetElement = event.target
+    if(targetElement.tagName == 'IMG'){
+        document.getElementById('mainImage').src =targetElement.getAttribute('src');
+    }
 }

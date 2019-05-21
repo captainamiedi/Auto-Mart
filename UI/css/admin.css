@@ -15,8 +15,8 @@ div a {
 }
 div.header-container{
     padding: 10px;
-    display: flex;
-    justify-content: space-around;
+    display: block;
+    padding-left: 150px
 }
 .auto{
     padding-top: 15px;
@@ -72,7 +72,7 @@ div.btn-view{
 }
 a.btn-default{
     text-decoration: none;
-    background-color: #4CAF50;
+    background-color: #F7290D;
     color: white;
     padding: 6px 10px;
     border: none;

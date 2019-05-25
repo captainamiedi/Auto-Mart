@@ -27,7 +27,13 @@
         "no-unused-expressions":"off",
         "guard-for-in":"off",
         "no-loop-func":"off",
-        "no-prototype-builtins":"off"
+        "no-prototype-builtins":"off",
+        "import/newline-after-import": "off",
+        "no-unused-vars": "warn",
+        "eol-last": "off",
+        "arrow-body-style":"off",
+        "object-curly-spacing":"off",
+        "quote-props":"off"
     }
     
 }

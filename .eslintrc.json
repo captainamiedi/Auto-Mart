@@ -33,7 +33,12 @@
         "eol-last": "off",
         "arrow-body-style":"off",
         "object-curly-spacing":"off",
-        "quote-props":"off"
+        "quote-props":"off",
+        "import/no-useless-path-segments": "off",
+        "indent":"off",
+        "spaced-comment": "off",
+        "arrow-spacing":"off",
+        "no-trailing-spaces":"off"
     }
     
 }

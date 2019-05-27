@@ -1,6 +1,7 @@
 import express from 'express';
 import moment from 'moment';
 import uuid from 'uuid';
+import order from '../controller/order';
 
 const router = express.Router();
 
@@ -10,7 +11,7 @@ router.get('/api/v1/un', (req, res, next)=>{
     });
 });
 
-router.post('/api/v1/order', (req, res, next)=>{
+router.post('/api/v1/car', (req, res, next)=>{
     const Ads = {
         car_id: uuid.v1(),
         email: req.body.email,
@@ -24,6 +25,19 @@ router.post('/api/v1/order', (req, res, next)=>{
     res.status(200).json({
         message: 'handling post request',
         createdAds: Ads,
+    });
+});
+router.post('/api/v1/order', (req, res, next)=>{
+    const order = {
+        car_id: uuid.v1(),
+        price: req.body.price,
+        price_offered: req.body.price_offered,
+        status: req.body.status,
+        createdDate: moment.now(),
+    };
+    res.status(200).json({
+        message: 'handling post request',
+        createdorder: order,
     });
 });
 

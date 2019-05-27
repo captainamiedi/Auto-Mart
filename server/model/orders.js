@@ -30,5 +30,28 @@ class Order {
     this.order.push(newOrder);
     return newOrder;
   }
+
+  /**
+   * 
+   * @param {uuid} id
+   * @returns {object} order object
+   */
+  findOne(id) {
+    return this.order.find(order => order.id === id);
+  }
+  /**
+   * 
+   * @param {uuid} id
+   * @param {object} data 
+   */
+  // update(id, data) {
+  //   const order = this.findOne(id);
+  //   const index = this.reflections.indexOf(reflection);
+  //   this.reflections[index].success = data['success'] || reflection.success;
+  //   this.reflections[index].lowPoint = data['lowPoint'] || reflection.lowPoint;
+  //   this.reflections[index].takeAway = data['takeAway'] || reflection.takeAway;
+  //   this.reflections[index].modifiedDate = moment.now()
+  //   return this.reflections[index];
+  // }
 }
 export default new Order();

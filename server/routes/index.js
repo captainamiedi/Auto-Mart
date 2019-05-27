@@ -1,8 +1,9 @@
 import express from 'express';
-import order from '../controller/order';
+import order from './order';
 
 const router = express.Router();
 
 router.use('/api/v1/order', order.create);
+router.use('/api/v1/order', order);
 
 export default router;

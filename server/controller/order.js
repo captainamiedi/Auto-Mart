@@ -16,6 +16,16 @@ const order = {
     const order = orderModel.create(req.body);
     return res.status(201).json(order);
   },
+  /**
+   * 
+   * @param {object} req 
+   * @param {object} res
+   * @returns {object} order object
+   */
+  getOne(req, res) {
+    const order = orderModel.findOne(req.params.id);
+    return res.status(200).json(order);
+  },
 };
 
 export default order;

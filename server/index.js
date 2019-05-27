@@ -3,7 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import router from './routes/index';
+import orderRouter from './routes/order';
 //import buyerRoutes from '../server/routes/index';
 
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // routes handling
 //app.use('/buyer', buyerRoutes);
-app.use('/', router);
+app.use('/', orderRouter);
 
 //Error handling
 app.use((req, res, next) => {

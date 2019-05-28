@@ -41,5 +41,18 @@ router.post('/api/v1/order', (req, res, next)=>{
     });
 });
 
+router.patch('/api/v1/order/:orderId', (req, res, next)=>{
+    const id = req.params.orderId;
+    const offer = {
+        status: req.body.status,
+        old_price_offered: req.body.old_price_offered,
+        new_price_offered: req.body.new_price_offered,
+    };
+    res.status(200).json({
+        message: 'handling update',
+        createdOrder: offer,
+    });
+});
+
 
 export default router;

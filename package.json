@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create_test_db": "psql -U postgres -f ./server/model/db/db_test.sql",
     "build": "babel server.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",

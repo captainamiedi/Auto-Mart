@@ -1,9 +1,5 @@
 import express from 'express';
-<<<<<<< HEAD
 import purchase from '../controller/order';
-=======
-import { purchase } from '../controller/order';
->>>>>>> change made on router
 
 const router = express.Router();
 

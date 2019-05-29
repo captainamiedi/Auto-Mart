@@ -1,13 +1,12 @@
 import express from 'express';
+<<<<<<< HEAD
 import purchase from '../controller/order';
+=======
+import { purchase } from '../controller/order';
+>>>>>>> change made on router
 
 const router = express.Router();
 
 router.post('/api/v1/order', purchase);
-router.get('/api/v1/order', (req, res, next)=>{
-    res.status(200).json({
-        success: 'true',
-        orders: db,
-    });
-});
+
 export default router;

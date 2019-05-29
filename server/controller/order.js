@@ -1,31 +1,20 @@
-import orderModel from '../model/orders';
+import moment from 'moment';
+import uuid from 'uuid';
 
-const order = {
-    /**
-   * 
-   * @param {object} req 
-   * @param {object} res
-   * @returns {object} order object 
-   */
-  create(req, res) {
-    if (!req.body.status && !req.body.price && !req.body.model 
-        && !req.body.maunfacturer && !req.body.state 
-        && !req.body.email) {
-      return res.status(400).json({'message': 'All fields are required'});
-    }
-    const order = orderModel.create(req.body);
-    return res.status(201).json(order);
-  },
-  /**
-   * 
-   * @param {object} req 
-   * @param {object} res
-   * @returns {object} order object
-   */
-  getOne(req, res) {
-    const order = orderModel.findOne(req.params.id);
-    return res.status(200).json(order);
-  },
+// eslint-disable-next-line import/prefer-default-export
+export const purchase = (req, res, next)=>{
+  const order = {
+      car_id: uuid.v1(),
+      id: db.length + 1,
+      price_offered: req.body.price_offered,
+      price: req.body.price,
+      status: req.body.status,
+      createdDate: moment.now(),
+  };
+  db.push(order);
+  res.status(200).json({
+      sucess: 'true',
+      message: 'handling post order request',
+      order,
+  });
 };
-
-export default order;

@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import orderRouter from './routes/order';
+//import order from './controller/order';
 //import buyerRoutes from '../server/routes/index';
 
 
@@ -17,6 +18,8 @@ app.use(cors());
 // routes handling
 //app.use('/buyer', buyerRoutes);
 app.use('/', orderRouter);
+//app.get('/api/v1/order/:id', order.getOne);
+//app.post('/api/v1/order', order.create);
 
 //Error handling
 app.use((req, res, next) => {

@@ -4,6 +4,7 @@ import {
 } from '../controller/dbController/order';
 // eslint-disable-next-line import/named
 import { signup, login } from '../controller/dbController/user';
+import specific_car from '../controller/dbController/cars';
 const router = express.Router();
 
 router.post('/api/v1/order', purchase);
@@ -13,4 +14,5 @@ router.patch('/api/v1/car/:id/status', mark_post);
 router.patch('/api/v1/car/:id/price', seller_update_price);
 router.post('/api/v1/signup', signup);
 router.post('/api/v1/login', login);
+router.get('/api/v1/car/:id', specific_car);
 export default router;

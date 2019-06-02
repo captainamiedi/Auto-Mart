@@ -1,6 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
-import db from '../model/dummy db/order';
+import db from '../../model/dummy_db/order';
 
 // eslint-disable-next-line import/prefer-default-export
 export const purchase = (req, res, next)=>{

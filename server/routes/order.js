@@ -12,10 +12,5 @@ router.patch('/api/v1/order/:id/price', update_price);
 router.patch('/api/v1/car/:id/status', mark_post);
 router.patch('/api/v1/car/:id/price', seller_update_price);
 router.post('/api/v1/signup', signup);
-//router.post('/api/v1/login', login);
-// router.get('/api/v1/login', (req, res)=>{
-//   res.status(200).json({
-    
-//   });
-// });
+router.post('/api/v1/login', login);
 export default router;

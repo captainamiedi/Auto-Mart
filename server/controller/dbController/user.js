@@ -41,5 +41,18 @@ export const signup = (req, res)=>{
   // });
 }; 
 
-
+export const login = (req, res)=>{
+  userDb.map((user, index)=>{
+    if (user.email !== req.body.email) {
+      return res.status(409).json({
+        message: 'user doesn\'t exist',
+      });
+    } 
+    if (user.email === req.body.email) {
+      return res.status(200).json({
+        message: 'login successful',
+      });
+    }
+  });
+};
 export default signup;

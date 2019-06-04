@@ -14,9 +14,20 @@ const cars = [
   {
     id: 2,
     owner: 2, // user id
-    created_on: moment.now(),
+    created_on: Date.now(),
     state: 'new', // new,used
-    status: 'availabe', // sold,available - default is available
+    status: 'unsold', // sold,available - default is available
+    price: '100,000',
+    manufacturer: 'Honda',
+    model: '200',
+    body_type: 'van',    
+  },
+  {
+    id: 3,
+    owner: 3, // user id
+    created_on: Date.now(),
+    state: 'new', // new,used
+    status: 'unsold', // sold,available - default is available
     price: '100,000',
     manufacturer: 'Honda',
     model: '200',

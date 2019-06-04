@@ -27,7 +27,7 @@ export const specific_car = (req, res) =>{
   });
 };
 
-export const unsold_cars = (req, res)=>{
+export const available_cars = (req, res)=>{
   const id = req.query.status;
   //console.log(id);
   let carFound;

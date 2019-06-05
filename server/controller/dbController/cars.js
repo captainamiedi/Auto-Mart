@@ -6,11 +6,12 @@ import db from '../../model/dummy_db/cars';
 export const specific_car = (req, res) =>{
   const id = parseInt(req.params.id, 10);
   let orderFound;
-  let orderIndex;
-  db.map((order, index)=>{
+  const carData = [];
+  db.map((order)=>{
     if (order.id === id) {
       orderFound = order;
-      orderIndex = index;
+      carData.push(orderFound);
+      //orderIndex = index;
     }
   });
   if (!orderFound) {
@@ -22,18 +23,47 @@ export const specific_car = (req, res) =>{
   res.status(200).json({
     success: true,
     massage: 'handling GET request',
-    orderFound,
+    carData,
     //orderIndex,
   });
 };
 
-export const available_cars = (req, res)=>{
-  const id = req.query.status;
-  //console.log(id);
+// export const available_cars = (req, res)=>{
+//   const {status} = req.query;
+//   console.log(status);
+//   let carFound;
+//   const carData = [];
+//   db.map((cars)=> {
+//     if (cars.status === status) {
+//       carFound = cars;
+//       carData.push(carFound);
+//     }
+//   });
+//   if (!carFound) {
+//     res.status(404).json({
+//       massage: 'not found',
+//     });
+//   }
+//   res.status(200).json({
+//     success: true,
+//     message: 'handling GET request',
+//     carData,
+//   });
+// };
+
+export const price_range_cars = (req, res) => {
+  const {min_price, max_price, status} = req.query;
+  console.log(status, min_price, max_price);
   let carFound;
-  db.map((cars)=> {
-    if (cars.status === id) {
+  const carData = [];
+  db.map((cars) => {
+    if ((cars.status === status) 
+    && (cars.price >= min_price && cars.price <= max_price)) {
       carFound = cars;
+      carData.push(carFound);
+    } else if (cars.status === status) {
+      carFound = cars;
+      carData.push(carFound);
     }
   });
   if (!carFound) {
@@ -44,8 +74,7 @@ export const available_cars = (req, res)=>{
   res.status(200).json({
     success: true,
     message: 'handling GET request',
-    carFound,
+    carData,
   });
 };
-
 //export default specific_car;

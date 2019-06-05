@@ -49,8 +49,11 @@ export const login = (req, res)=>{
       });
     } 
     if (user.email === req.body.email) {
+      delete user.password;
+      console.log(user);
       return res.status(200).json({
-        message: 'login successful',
+        status: 200,
+        data: user,
       });
     }
   });

@@ -77,4 +77,22 @@ export const price_range_cars = (req, res) => {
     carData,
   });
 };
+
+export const remove_cars = (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  console.log(id);
+  db.map((cars, index) => {
+    if (cars.id === id) {
+      db.splice(index, 1);
+      return res.status(200).json({
+        status: 200,
+        data: 'car Ad successfully deleted',
+      });
+    }
+  });
+  res.status(404).json({
+    success: false,
+    message: 'not found',
+  });
+};
 //export default specific_car;

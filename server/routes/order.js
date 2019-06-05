@@ -1,10 +1,11 @@
 import express from 'express';
 import {
-  purchase, car_sale, update_price, mark_post, seller_update_price,
+  purchase, car_sale, update_price, 
+  mark_post, seller_update_price,
 } from '../controller/dbController/order';
 // eslint-disable-next-line import/named
 import { signup, login } from '../controller/dbController/user';
-import {specific_car, available_cars} from '../controller/dbController/cars';
+import {specific_car, available_cars, price_range_cars} from '../controller/dbController/cars';
 const router = express.Router();
 
 router.post('/api/v1/order', purchase);
@@ -15,6 +16,7 @@ router.patch('/api/v1/car/:id/price', seller_update_price);
 router.post('/api/v1/signup', signup);
 router.post('/api/v1/login', login);
 router.get('/api/v1/car/:id', specific_car);
-router.get('/api/v1/car', available_cars);
+//router.get('/api/v1/car', available_cars);
+router.get('/api/v1/car', price_range_cars);
 
 export default router;

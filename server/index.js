@@ -1,9 +1,11 @@
-/* eslint-disable no-multiple-empty-lines */
 import express from 'express';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import swaggerDoc from './swagger.json';
 import orderRouter from './routes/order';
+//const swaggerDoc = require('../swagger.json');
 //import order from './controller/order';
 //import buyerRoutes from '../server/routes/index';
 
@@ -18,6 +20,7 @@ app.use(cors());
 // routes handling
 //app.use('/buyer', buyerRoutes);
 app.use('/', orderRouter);
+app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 //app.get('/api/v1/order/:id', order.getOne);
 //app.post('/api/v1/order', order.create);
 

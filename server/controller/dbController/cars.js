@@ -12,7 +12,12 @@ export const specific_car = (req, res) =>{
       orderFound = order;
       carData.push(orderFound);
       //orderIndex = index;
-    }
+    } //else {
+    //   res.status(200).json({
+    //     status: 200,
+    //     db,
+    //   });
+    // }
   });
   if (!orderFound) {
     res.status(404).json({
@@ -92,6 +97,16 @@ export const remove_cars = (req, res) => {
   });
   res.status(404).json({
     success: false,
+    message: 'not found',
+  });
+};
+
+export const get_all = (req, res) => {
+  res.status(200).json({
+    status: 200,
+    db,
+  });
+  res.status(404).json({
     message: 'not found',
   });
 };

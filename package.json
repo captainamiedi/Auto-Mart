@@ -8,7 +8,6 @@
     "build": "babel server.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "coveralls": "npm run test-local && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

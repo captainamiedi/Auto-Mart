@@ -23,7 +23,7 @@ Auto-Mart is an app for users to buy and sell cars from the comfort of their hom
 
 
 ### Deployment
-Ride-My-Way UI is hosted on gh-pages while the app is hosted on Heroku
+AutoMart UI is hosted on gh-pages
 * [Github Page](https://captainamiedi.github.io/Auto-Mart/UI/html/index.html)
 * [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2346197)
 

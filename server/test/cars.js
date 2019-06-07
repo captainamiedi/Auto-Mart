@@ -32,7 +32,7 @@ describe('GET ALL CARS', () => {
     //const {status, min_price, max_price} = 'available, 1,000, 100,000';
     chai.request(app)
       // eslint-disable-next-line no-sequences
-      .get('/api/v1/car?status=available')
+      .get('/api/v1/cars?status=available')
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a('object');
@@ -40,13 +40,8 @@ describe('GET ALL CARS', () => {
       });
   });
   it('should allow user to access specific car with price range', (done) => {
-    //const status = 'available';
-    //const min_price = '1,000';
-    //const max_price = '100,000';
-    //const {status, min_price, max_price} = 'available, 1,000, 100,000';
     chai.request(app)
-      // eslint-disable-next-line no-sequences
-      .get('/api/v1/car?status=available&min_price=1,000&max_price=100,000')
+      .get('/api/v1/cars?status=available&min_price=1,000&max_price=100,000')
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a('object');
@@ -113,7 +108,7 @@ describe('DELETE A SPECIFIC CAR', () => {
   it('should user delete a specific car', (done) =>{
     const id = 1;
     chai.request(app)
-      .delete(`/api/v1/car/${id}`)
+      .delete(`/api/v1/cars/${id}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a('object');

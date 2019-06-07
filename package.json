@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "set NODE_ENV=test&&  mocha --require babel-register --env test ./server/test/*.js --exit",
     "build": "babel server.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -24,20 +25,27 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-watch": "^7.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
     "nyc": "14.1.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.1.4",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
+    "swagger-ui-express": "^4.0.6",
     "uuid": "^3.3.2"
   }
 }

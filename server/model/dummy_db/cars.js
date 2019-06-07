@@ -17,13 +17,13 @@ const cars = [
     created_on: Date.now(),
     state: 'new', // new,used
     status: 'sold', // sold,available - default is available
-    price: '100,000',
+    price: '200,000',
     manufacturer: 'Honda',
     model: '200',
     body_type: 'van',    
   },
   {
-    id: 2,
+    id: 3,
     owner: 3, // user id
     created_on: Date.now(),
     state: 'new', // new,used

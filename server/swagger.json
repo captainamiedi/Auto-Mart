@@ -1,0 +1,602 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "This is an AutoMart app that enable users to buy and sell cars from the comfort of their home and offices.",
+      "version": "1.0.0",
+      "title": "AutoMart",
+      "contact": {
+        "email": "captainamiedi1@gmail.com"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "auth",
+        "description": "Authenticate users"
+      },
+      {
+        "name": "cars",
+        "description": "list of cars for sale"
+      },
+      {
+        "name": "order",
+        "description": "list of orders made for cars sales"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consume": [
+      "application/json"
+    ],
+    "produce": [
+      "application/json"
+    ],
+    "paths": {
+      "/signup": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Create user",
+          "description": "User need to signup to create account",
+          "operationId": "signup_user",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User need to signup to create account",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Sign Successful"
+            },
+            "400": {
+              "description": "Invalid Input supplied"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ]
+        }
+      },
+      "/login": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Logs user into the system",
+          "description": "",
+          "operationId": "loginUser",
+          "consumes":[
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "email",
+              "in": "formData",
+              "description": "Enter Email for login",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "formData",
+              "description": "Enter password for login ",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Invalid username/password supplied"
+            }
+          }
+        }
+      },
+      "/order": {
+        "post": {
+          "tags": [
+            "order"
+          ],
+          "summary": "user can post car for sale",
+          "description": "Returns a map of status codes to quantities",
+          "operationId": "postPurchase",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces":[
+            "application/json"
+          ],
+          "parameters":[
+            {
+              "car_id": "id",
+              "in": "path",
+              "description": "car order id",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "price",
+              "in": "formData",
+              "description": "car price",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "price_offered",
+              "in": "formData",
+              "description": "car order price",
+              "required": true,
+              "type": "string" 
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/order"
+              }
+            },
+            "400": {
+              "description": "Invalid Input supplied"
+            }
+          }
+        }
+      },
+      "/car": {
+        "post": {
+          "tags": [
+            "cars"
+          ],
+          "summary": "user can post car sale ADs",
+          "description": "Returns a map of status codes to quantities",
+          "operationId": "postSale",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces":[
+            "application/json"
+          ],
+          "parameters":[
+            {
+              "name": "email",
+              "in": "formData",
+              "description": "user email",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "price",
+              "in": "formData",
+              "description": "car price",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "manufacturer",
+              "in": "formData",
+              "description": "car manufacturer",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "model",
+              "in": "formData",
+              "description": "car model",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "state",
+              "in": "formData",
+              "description": "car state e.g new, used",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "in": "formData",
+              "description": "car status e.g sold, available",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/cars"
+              }
+            },
+            "400": {
+              "description": "Invalid Input supplied"
+            }
+          }
+        }
+      },
+      "/order/{id}/price": {
+        "patch": {
+          "tags": [
+            "order"
+          ],
+          "summary": "Update order price with form data",
+          "description": "Returns a map with status code",
+          "operationId": "updatePrice",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "order id",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "old_price",
+              "in": "formData",
+              "description": "car old price",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "new_price",
+              "in": "formData",
+              "description": "new price offered",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/order"
+              }
+            },
+            "400": {
+              "description": "Invalid Input supplied"
+            }
+          }
+        }
+      },
+      "car/{id}/status": {
+        "patch": {
+          "tags": [
+            "cars"
+          ],
+          "summary": "Update car status with form data",
+          "description": "Returns a map with status code",
+          "operationId": "updateStatus",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "car id",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "new_status",
+              "in": "formData",
+              "description": "new status",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type":"object",
+                "$ref":"#/definitions/cars"
+              }
+            },
+            "400": {
+              "description": "Invalid Input supplied"
+            }
+          }
+        }
+      },
+      "car/{id}/price":{
+        "patch": {
+          "tags":[
+            "cars"
+          ],
+          "summary":"Update car price with form data",
+          "description": "Returns a map of status codes to quantities",
+          "operationId": "updatePrice",
+          "consumes":[
+            "multipart/form-data"
+          ],
+          "produces":[
+            "application/json"
+          ],
+          "parameters":[
+            {
+              "name": "id",
+              "in": "path",
+              "description": "car id",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "new_price",
+              "in": "formData",
+              "description": "new price",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses":{
+            "200":{
+              "description": "successful operation",
+              "schema":{
+                "type":"object",
+                "$ref":"#/definitions/cars"
+              }
+            },
+            "400":{
+              "description": "Invalid Input supplied"
+            }
+          }
+        }
+      },
+      "/car/{id}": {
+        "get": {
+          "tags":[
+            "cars"
+          ],
+          "summary": "Return car with the id",
+          "description": "Returns a map with status code",
+          "operationId": "getCarsById",
+          "produces":[
+            "application/json"
+          ],
+          "parameters":[
+            {
+              "name": "id",
+              "in": "path",
+              "description": "car id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses":{
+            "200":{
+              "description": "successful operation",
+              "schema":{
+                "type":"object",
+                "$ref":"#/definitions/cars"
+              }
+            },
+            "400":{
+              "description": "car not found"
+            }
+          }
+        }
+      },
+      "/cars":{
+        "get":{
+          "tags":[
+            "cars"
+          ],
+          "summary": "Return list of car with the input through query params",
+          "description": "Returns a map with status code",
+          "operationId": "getCarsByQueryParams",
+          "consumes":[
+            "multipart/form-data"
+          ],
+          "produces":[
+            "application/json"
+          ],
+          "parameters":[
+            {
+              "name": "status",
+              "in": "query",
+              "description": "status",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "min_price",
+              "in": "query",
+              "description": "min_price",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "max_price",
+              "in": "query",
+              "description": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses":{
+            "200":{
+              "description": "successful operation",
+              "schema":{
+                "type":"object",
+                "$ref":"#/definitions/cars"
+              }
+            },
+            "400":{
+              "description": "car not found"
+            }
+          }
+        }
+      },
+      "/cars/{id}": {
+        "delete": {
+          "tags":[
+            "cars"
+          ],
+          "summary": "Delete car with an id",
+          "description": "Returns a map with status code",
+          "operationId": "deleteCar",
+          "consumes":[
+            "multipart/form-data"
+          ],
+          "produces":[
+            "application/json"
+          ],
+          "parameters":[
+            {
+              
+              "name": "id",
+              "in": "path",
+              "description": "status",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses":{
+            "200":{
+              "description": "successful operation",
+              "schema":{
+                "type": "object",
+                "$ref":"#/definitions/cars"
+              }
+            },
+            "400":{
+              "description": "car not found"
+            }
+          }
+        }
+      },
+      "/all": {
+        "get":{
+          "tags":[
+            "cars"
+          ],
+          "summary": "Return list of  all cars",
+          "description": "",
+          "operationId": "getAllCars",
+          "produces":[
+            "application/json"
+          ],
+          "responses":{
+            "200": {
+              "description": "successful operation",
+              "schema":{
+                "type":"object",
+                "$ref":"#/definitions/cars"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions":{
+      "id": {
+        "type": "integer"
+      },
+      "cars":{
+        "type": "object",
+        "properties":{
+          "state": {
+            "type": "string"
+          },
+          "price": {
+            "type": "float"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "body-type": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "created_on": {
+            "type": "DateTime"
+          }
+        }
+      },
+      "order": {
+        "type": "object",
+        "properties": {
+          "buyer": {
+            "type":"integer"
+          },
+          "car_id": {
+            "type":"integer"
+          },
+          "amount": {
+            "type":"integer"
+          },
+          "status": {
+            "type":"string"
+          }
+        }
+      },
+      "User":{
+        "type": "object",
+        "properties":{
+          "email": {
+            "type": "string"
+          },
+          "first-name": {
+            "type": "string"
+          },
+          "last-name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "is_admin": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+}

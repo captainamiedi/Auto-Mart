@@ -7,7 +7,7 @@
     "test": "set NODE_ENV=test&& mocha --require babel-register --env test ./server/test/*.js --exit",
     "build": "babel server.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
-    "coverage": "nyc report --reporter=lcov --reporter=text | coveralls"
+    "coverage": "nyc report --reporter=lcov --reporter=text"
   },
   "repository": {
     "type": "git",

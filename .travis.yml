@@ -12,4 +12,5 @@ install: npm install
 #   - psql -c 'create database db_test;' -U postgres
 #   # - cat ./server/model/db/test.sql | psql -h localhost -U postgres db_test
 #   - psql -c "CREATE USER AutoMart WITH PASSWORD '1NIGeria';" -U postgres
+script: npm run test
 after_success: npm run coverage

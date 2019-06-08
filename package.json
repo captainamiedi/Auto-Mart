@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test&&  mocha --require babel-register --env test ./server/test/*.js --exit",
+    "test": "set NODE_ENV=test&& mocha --require babel-register --env test ./server/test/*.js --exit",
     "build": "babel server.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "npm run test-local && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=lcov --reporter=text | coveralls"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
     "mocha": "^6.1.4",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.19.0",
     "nyc": "14.1.1"
   },

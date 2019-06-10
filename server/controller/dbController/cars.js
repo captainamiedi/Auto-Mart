@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import moment from 'moment';
-import uuid from 'uuid';
 import db from '../../model/dummy_db/cars';
 
 export const specific_car = (req, res) =>{
@@ -73,7 +72,7 @@ export const price_range_cars = (req, res) => {
   });
   if (!carFound) {
     res.status(404).json({
-      massage: 'not found',
+      message: 'not found',
     });
   }
   res.status(200).json({
@@ -93,11 +92,11 @@ export const remove_cars = (req, res) => {
         status: 200,
         data: 'car Ad successfully deleted',
       });
-    }
-  });
-  res.status(404).json({
-    success: false,
-    message: 'not found',
+    } 
+    res.status(404).json({
+      success: false,
+      message: 'not found',
+    });
   });
 };
 

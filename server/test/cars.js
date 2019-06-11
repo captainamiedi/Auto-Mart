@@ -21,10 +21,7 @@ describe('GET ALL CARS', () => {
       .get(`/api/v1/car/${id}`)
       .end((err, res) => {
         res.should.have.status(200);
-        res.should.be.a('object')
-          .end((err, res)=>{
-            res.should.have.status(404);
-          });
+        res.should.be.a('object');
         done();
       });
   });

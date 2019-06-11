@@ -100,11 +100,45 @@ button[type=submit] {
     padding: 45px;
     text-align: center;
   }
-  .footer-content{
-    background: #333333;
-    color: #fff;
-    width: 100%;
-    height: auto;
-    padding-top: 10px;
-    text-align: center;
- }
+.footer-content{
+  color: #fff;
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+  text-align: center;
+}
+footer{
+    background: #000 none repeat scroll 0 0;
+    padding: 17px 10px 10px;
+}
+
+@media only screen and (max-width:740px) {
+  div.header-container {
+      display: inline;
+      padding: 0 0;
+      text-align: center;
+  }
+  nav  li button{
+      font-size: 12px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      padding: 6px 10px;
+  }
+  nav {
+      text-align: center;
+      padding-left: 7px;
+      padding-right: 25px;
+      display: flex;
+      justify-content: space-between;
+  }
+  nav li a {
+      font-size: 14px;
+      padding-left: 6px;
+  }
+  .auto{
+      font-size: 16px;
+  }
+}
+  

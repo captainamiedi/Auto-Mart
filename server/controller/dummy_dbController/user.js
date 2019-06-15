@@ -1,6 +1,5 @@
 import moment from 'moment';
-import jwt from 'jsonwebtoken';
-import userDb from '../../model/dummy_db/user'; 
+import userDb from '../../model/dummy_db/user';
 
 export const signup = (req, res)=>{
   userDb.map((user, index)=>{
@@ -18,27 +17,12 @@ export const signup = (req, res)=>{
     address: req.body.address,
     email: req.body.email,
   };
-  jwt.sign({user}, 'secretkey', {expiresIn: '30s'}, (err, token)=>{
-    res.status(200).json({
-      token,
-      user,
-      //{id, first_name, last_name,email} = user,
-    });
-    userDb.push(user);
-    res.status(200).json({
-      success: 'true',
-      messsage: 'signup successful',
-      user,
-      token,
-    });
+  userDb.push(user);
+  res.status(200).json({
+    success: 'true',
+    messsage: 'signup successful',
+    user,
   });
-  // userDb.push(user);
-  // res.status(200).json({
-  //   success: 'true',
-  //   messsage: 'signup successful',
-  //   user,
-  //   token,
-  // });
 }; 
 
 export const login = (req, res)=>{
@@ -49,11 +33,8 @@ export const login = (req, res)=>{
       });
     } 
     if (user.email === req.body.email) {
-      delete user.password;
-      console.log(user);
       return res.status(200).json({
-        status: 200,
-        data: user,
+        message: 'login successful',
       });
     }
   });

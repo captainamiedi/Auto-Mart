@@ -44,7 +44,7 @@ export const update_price = (req, res)=>{
   let orderFound;
   let orderIndex;
   db.map((order, index)=>{
-    if ((order.id === id) && (order.status === 'pending')) {
+    if (order.id === id) {
       orderFound = order;
       orderIndex = index;
     }

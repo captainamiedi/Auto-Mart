@@ -1,7 +1,7 @@
 {
   "name": "auto-mart",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Build Status](https://travis-ci.org/captainamiedi/Auto-Mart.svg?branch=develop)](https://travis-ci.org/captainamiedi/Auto-Mart)",
   "main": "index.js",
   "scripts": {
     "test": "set NODE_ENV=test&& mocha --require babel-register --env test ./server/test/*.js --exit",
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/captainamiedi/Auto-Mart.git"
   },
-  "author": "",
+  "author": "Bright Amidiagbe",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/captainamiedi/Auto-Mart/issues"
@@ -29,22 +29,28 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
+    "make-runnable": "^1.3.6",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.19.0",
     "nyc": "14.1.1"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
+    "code-point-at": "^1.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
+    "pg": "^7.11.0",
     "swagger-ui-express": "^4.0.6",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "wide-align": "^1.1.3"
   }
 }

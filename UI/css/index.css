@@ -64,7 +64,7 @@ button.Sign{
 }
 * {box-sizing: border-box}
 /* Full-width input fields */
-  input[type=text], input[type=password] {
+  input[type=text] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -274,4 +274,42 @@ button:hover {
 footer{
     background: #000 none repeat scroll 0 0;
     padding: 17px 10px 10px;
+}
+
+@media only screen and (max-width:740px) {
+    div.container {
+        display: inline;
+        padding: 0 0;
+        text-align: center;
+    }
+    nav  li button{
+        font-size: 12px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 6px 10px;
+    }
+    nav {
+        text-align: center;
+        padding-left: 7px;
+        padding-right: 25px;
+        display: flex;
+        justify-content: space-between;
+    }
+    nav li a {
+        font-size: 14px;
+        padding-left: 6px;
+    }
+    .auto{
+        font-size: 16px;
+    }
+    .carousel h3{
+        text-align: center;
+        left: 15%;
+        top: 64px;
+    }
+    div.search-bar button {
+        width: 20%;
+    }
 }

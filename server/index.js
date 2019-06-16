@@ -6,7 +6,7 @@ import cors from 'cors';
 import orderRouter from './routes/order';
 //import order from './controller/order';
 //import buyerRoutes from '../server/routes/index';
-
+import { gzsg } from './model/db/db_test.sql';
 
 const app = express();
 

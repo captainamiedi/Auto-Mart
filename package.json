@@ -4,7 +4,8 @@
   "description": "[![Build Status](https://travis-ci.org/captainamiedi/Auto-Mart.svg?branch=develop)](https://travis-ci.org/captainamiedi/Auto-Mart)",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test&& mocha --require babel-register --env test ./server/test/*.js --exit",
+    "create_test_db": "psql -U postgres -f ./server/model/db/db_test.sql",
+    "test": "npm run create_test_db && set NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
     "build": "babel ./server/index.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
     "coverage": "nyc report --reporter=lcov --reporter=text"
@@ -21,6 +22,8 @@
   "homepage": "https://github.com/captainamiedi/Auto-Mart#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-watch": "^7.0.0",
     "chai": "^4.2.0",
@@ -40,6 +43,8 @@
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "code-point-at": "^1.1.0",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",

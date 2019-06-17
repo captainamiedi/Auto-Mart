@@ -3,10 +3,12 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import orderRouter from './routes/order';
 //import order from './controller/order';
 //import buyerRoutes from '../server/routes/index';
-import { gzsg } from './model/db/db_test.sql';
+
+dotenv.config();
 
 const app = express();
 

@@ -70,3 +70,39 @@ export const signupValidator = (req, res, next) => {
 
   next();
 };
+
+/**
+ * @description This function validate user signup input field
+ * @param {object} req
+ * @param {object} res
+ * @param {object} next
+ */
+export const loginValidator = (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !email.trim()) {
+    return responseMsg(res, 400, 'fail', 'email is required');
+  }
+  if (!password || !password.trim()) {
+    return responseMsg(res, 400, 'fail', 'password is required');
+  }
+  if (!isValidEmail(email)) {
+    return responseMsg(res, 400, 'fail', 'email is not valid');
+  }
+  if (password.length < 8) {
+    return responseMsg(res, 400, 'fail', 'password must not be less than 8 character');
+  }
+  if (!lowerCaseChecker(password)) {
+    return responseMsg(res, 400, 'fail', 'password must contain at least a lowercase');
+  }
+  if (!upperCaseChecker(password)) {
+    return responseMsg(res, 400, 'fail', 'Password must contain at least an uppercase');
+  }
+  if (!numChecker(password)) {
+    return responseMsg(res, 400, 'fail', 'Password must contain at least a number');
+  }
+  if (!specCharChecker(password)) {
+    return responseMsg(res, 400, 'fail', 'Password must contain at least one \'$\',\'@\',\'#\',\'&\',or\'!\'');
+  }
+  next();
+};

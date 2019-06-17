@@ -40,7 +40,7 @@ const devConString = {
 };
 
 const devTestConString = {
-  user: 'bright',
+  user: 'postgres',
   host: '127.0.0.1',
   database: 'db_test',
   password: '1NIGeria',

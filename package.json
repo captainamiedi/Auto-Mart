@@ -4,6 +4,7 @@
   "description": "[![Build Status](https://travis-ci.org/captainamiedi/Auto-Mart.svg?branch=develop)](https://travis-ci.org/captainamiedi/Auto-Mart)",
   "main": "index.js",
   "scripts": {
+    "create_db": "psql -U postgres -f ./server/model/db/db.sql",
     "create_test_db": "psql -U postgres -f ./server/model/db/db_test.sql",
     "test": "npm run create_test_db && set NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
     "build": "babel ./server/index.js --out-dir build",

@@ -58,3 +58,15 @@ export const update_car_price = async (req, res) => {
     return res.status(400).json(error);
   }
 };
+
+export const specific_car = async (req, res) => {
+  const query = 'SELECT * FROM cars WHERE id = $1';
+  const values = [req.params.car_id];
+
+  try {
+    const result = await db.query(query, values);
+    return carResponseMsg(res, 200, 'successful', result.rows[0]);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+};

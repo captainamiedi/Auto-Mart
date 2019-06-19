@@ -130,4 +130,4 @@ export const carSaleValidator = (req, res, next) => {
     return responseMsg(res, 400, 'fail', 'car body_type is required');
   }
   next();
-};
+}; 

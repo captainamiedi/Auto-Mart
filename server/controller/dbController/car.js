@@ -26,7 +26,23 @@ export const car_sale = async (req, res) =>{
     //console.log(result);
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
+    return res.status(400).json(error);
+  }
+};
+
+export const mark_sold = async (req, res) => {
+  // const { id } = req.params;
+  const updateMarkQuery = 'UPDATE cars SET price = $1 WHERE id = $2 RETURNING *';
+  const values = [
+    req.body.status,
+    req.params.id,
+  ];
+  try {
+    const result = await db.query(updateMarkQuery, values);
+    console.log(result);
+    return carResponseMsg(res, 200, 'successful update', result.rows[0]);
+  } catch (error) {
     return res.status(400).json(error);
   }
 };

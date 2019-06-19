@@ -68,6 +68,7 @@ export const login = async (req, res) => {
     const token = jwt.sign({
       email: foundUser.rows[0].email,
       id: foundUser.rows[0].id,
+      is_admin: foundUser.rows[0].is_admin,
     }, 'bright', { expiresIn: '12h'});
     const data = {
       token,

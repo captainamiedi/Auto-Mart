@@ -24,3 +24,11 @@ CREATE TABLE cars (
     body_type VARCHAR(120)NOT NULL,
     owner_id UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE
 );
+
+CREATE TABLE orders(
+    id UUID PRIMARY KEY,
+    car_id UUID NOT NULL,
+    amount VARCHAR(120) NOT NULL,
+    status VARCHAR(120) NOT NULL,
+    buyer UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE
+);

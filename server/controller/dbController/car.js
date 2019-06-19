@@ -107,17 +107,27 @@ export const view_status_price = async (req, res) => {
     console.log(req.query.status);
     if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
       const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
-      console.log(viewStatus.rows, '1st case');
+      //console.log(viewStatus.rows, '1st case');
       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
     }
     console.log(value, 'hjghjjgjd....');
     if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
       //console.log(value);
       const result = await db.query(view, value);
-      console.log(result.rows, '2nd case');
+      //console.log(result.rows, '2nd case');
       return carResponseMsg(res, 200, 'successful', result.rows);
     //console.log(result);
     }
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+};
+
+export const view_all = async (req, res) => {
+  const query = 'SELECT * FROM cars';
+  try {
+    const result = await db.query(query);
+    return carResponseMsg(res, 200, 'successful', result.rows);
   } catch (error) {
     return res.status(400).json(error);
   }

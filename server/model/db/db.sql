@@ -18,7 +18,7 @@ CREATE TABLE cars (
     created_date TIMESTAMP,
     state VARCHAR(80) NOT NULL,
     status VARCHAR(100) NOT NULL,
-    price VARCHAR(100) NOT NULL,
+    price INTEGER NOT NULL,
     manufacturer VARCHAR(120) NOT NULL ,
     model VARCHAR(120) NOT NULL,
     body_type VARCHAR(120)NOT NULL,

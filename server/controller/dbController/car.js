@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 import uuidv4 from 'uuid';
 import db from '../../model/db/config';
 import { carResponseMsg } from '../../utils/helpers';
@@ -33,7 +31,7 @@ export const car_sale = async (req, res) =>{
 
 export const mark_sold = async (req, res) => {
   // const { id } = req.params;
-  const updateMarkQuery = 'UPDATE cars SET price = $1 WHERE id = $2 RETURNING *';
+  const updateMarkQuery = 'UPDATE cars SET status = $1 WHERE id = $2 RETURNING *';
   const values = [
     req.body.status,
     req.params.id,
@@ -41,6 +39,20 @@ export const mark_sold = async (req, res) => {
   try {
     const result = await db.query(updateMarkQuery, values);
     console.log(result);
+    return carResponseMsg(res, 200, 'successful update', result.rows[0]);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+};
+
+export const update_car_price = async (req, res) => {
+  const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 RETURNING *';
+  const values = [
+    req.body.price,
+    req.params.id,
+  ];
+  try {
+    const result = await db.query(updatePriceQuery, values);
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
     return res.status(400).json(error);

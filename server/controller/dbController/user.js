@@ -57,6 +57,7 @@ export const login = async (req, res) => {
   ];
   try {
     const foundUser = await db.query(getLoginUser, valueLog);
+    //console.log(foundUser, 'na so ....');
     if (!foundUser.rows.length === 0) {
       return responseMsg(res, 404, 'fail', 'Email not found');
     }
@@ -64,7 +65,10 @@ export const login = async (req, res) => {
     if (comparePassword === false) {
       return responseMsg(res, 404, 'fail', 'invalid password');
     }
-    const token = jwt.sign({email: foundUser.rows[0].email}, 'bright', { expiresIn: '12h'});
+    const token = jwt.sign({
+      email: foundUser.rows[0].email,
+      id: foundUser.rows[0].id,
+    }, 'bright', { expiresIn: '12h'});
     const data = {
       token,
       id: foundUser.rows[0].id,

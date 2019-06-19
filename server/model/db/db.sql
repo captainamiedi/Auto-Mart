@@ -1,18 +1,16 @@
-DROP DATABASE IF EXISTS db_test;
-CREATE DATABASE db_test;
+DROP DATABASE IF EXISTS AutoMart;
+CREATE DATABASE AutoMart;
 
-\c db_test;
-
-
+\c AutoMart;
 
 CREATE TABLE users(
-        id UUID PRIMARY KEY,
-        email VARCHAR(120) NOT NULL,
-        first_name VARCHAR(120) NOT NULL,
-        last_name VARCHAR(120) NOT NULL,
-        password VARCHAR(120) NOT NULL,
-        address VARCHAR(200) NULL,
-        is_admin VARCHAR(50) NULL
+    id UUID PRIMARY KEY,
+    email VARCHAR(120) NOT NULL,
+    first_name VARCHAR(120) NOT NULL,
+    last_name VARCHAR(120) NOT NULL,
+    password VARCHAR(120) NOT NULL,
+    address VARCHAR(200) NULL,
+    is_admin VARCHAR(50) NULL
 );
 
 CREATE TABLE cars (

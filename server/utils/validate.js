@@ -106,3 +106,28 @@ export const loginValidator = (req, res, next) => {
   }
   next();
 };
+
+export const carSaleValidator = (req, res, next) => {
+  const {
+    model, manufacturer, price, state, status, body_type, 
+  } = req.body;
+  if (!model || !model.trim()) {
+    return responseMsg(res, 400, 'fail', 'car model is required');
+  }
+  if (!manufacturer || !manufacturer.trim()) {
+    return responseMsg(res, 400, 'fail', 'car manufacturer is required');
+  }
+  if (!price || !price.trim()) {
+    return responseMsg(res, 400, 'fail', 'price is required');
+  }
+  if (!state || !state.trim()) {
+    return responseMsg(res, 400, 'fail', 'car state is requiredd');
+  }
+  if (!status || !status.trim()) {
+    return responseMsg(res, 400, 'fail', 'car status is required');
+  }
+  if (!body_type || !body_type.trim()) {
+    return responseMsg(res, 400, 'fail', 'car body_type is required');
+  }
+  next();
+};

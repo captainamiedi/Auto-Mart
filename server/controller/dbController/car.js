@@ -61,11 +61,63 @@ export const update_car_price = async (req, res) => {
 
 export const specific_car = async (req, res) => {
   const query = 'SELECT * FROM cars WHERE id = $1';
+  //const viewQuery = 'SELECT * FROM cars where status = $1';
+  //const viewValues = [req.query];
   const values = [req.params.car_id];
 
   try {
+    // const result = await db.query(query, values);
+    // return carResponseMsg(res, 200, 'successful', result.rows[0]);
+    // if (viewValues === 'sold') {
+    //   const viewStatus = await db.query(viewQuery, viewValues);
+    //   return carResponseMsg(res, 200, 'successful', viewStatus.rows[0]);
+    // } 
     const result = await db.query(query, values);
+    console.log(result.rows);
     return carResponseMsg(res, 200, 'successful', result.rows[0]);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+}; 
+
+export const view_status = async (req, res) => {
+  const view = 'SELECT * FROM cars WHERE status =$1';
+  const value = [req.query];
+
+  try {
+    console.log(value);
+    const result = await db.query(view, [req.query.status]);
+    return carResponseMsg(res, 200, 'successful', result.rows);
+    //console.log(result);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+};
+
+export const view_status_price = async (req, res) => {
+  const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3';
+  const viewStatusQuery = 'SELECT * FROM cars WHERE status =$1';
+  const value = [
+    req.query.status,
+    req.query.min_price,
+    req.query.max_price,
+  ];
+
+  try {
+    console.log(req.query.status);
+    if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
+      const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
+      console.log(viewStatus.rows, '1st case');
+      return carResponseMsg(res, 200, 'successful', viewStatus.rows);
+    }
+    console.log(value, 'hjghjjgjd....');
+    if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
+      //console.log(value);
+      const result = await db.query(view, value);
+      console.log(result.rows, '2nd case');
+      return carResponseMsg(res, 200, 'successful', result.rows);
+    //console.log(result);
+    }
   } catch (error) {
     return res.status(400).json(error);
   }

@@ -12,7 +12,7 @@ export const signup = async (req, res) => {
   const createUserQuery = 'INSERT INTO users(id, first_name, last_name, email, password, address, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) returning *';
   const email = [req.body.email];
 
-  
+
   try {
     const result = await db.query(getUserQuery, email);
     //console.log(result);
@@ -32,8 +32,12 @@ export const signup = async (req, res) => {
     const response = await db.query(createUserQuery, newUser);
     //console.log(response, 'responding....');
     delete response.rows[0].password;
-    const token = jwt.sign({email: response.rows[0].email}, 'bright', { expiresIn: '12h'});
-    //console.log(token, 'token working........');
+    const token = jwt.sign({
+      email: response.rows[0].email,
+      id: response.rows[0].id,
+      is_admin: response.rows[0].is_admin,
+    }, 'bright', { expiresIn: '12h'});    
+    console.log(token, 'token working........');
     const data = {
       token,
       id: response.rows[0].id,

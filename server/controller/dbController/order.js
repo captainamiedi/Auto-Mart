@@ -5,18 +5,19 @@ import { orderResponseMsg } from '../../utils/helpers';
 
 // eslint-disable-next-line import/prefer-default-export
 export const purchase = async (req, res) => {
-  // const getPriceQuery = 'SELECT * FROM cars WHERE id = $1';
-  // const valueId = [req.params.id];
-  const createOrderQuery = 'INSERT INTO orders (id, car_id, created_0n,  new_offered, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+  const getPriceQuery = 'SELECT id FROM cars WHERE id = $1';
+  const valueId = [req.body.car_id];
+  const createOrderQuery = 'INSERT INTO orders (id, car_id, status, new_price_offered, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
   
 
   try {
-    // const foundCar = await db.query(getPriceQuery, valueId);
+    const foundCar = await db.query(getPriceQuery, valueId);
+    console.log(foundCar.rows[0]);
     const values = [
       uuidv4(),
-      uuidv4(),
-      new Date(),
-      req.body.new_offered,
+      foundCar.rows[0].id,
+      req.body.status,
+      req.body.new_price_offered,
       req.authData.id,
     ];
     console.log(req.authData.id, 'working......');

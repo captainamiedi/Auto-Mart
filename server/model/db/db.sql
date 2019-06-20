@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS AutoMart;
-CREATE DATABASE AutoMart;
+DROP DATABASE IF EXISTS automart;
+CREATE DATABASE automart;
 
-\c AutoMart;
+\c automart;
 
 CREATE TABLE users(
     id UUID PRIMARY KEY,
@@ -27,8 +27,9 @@ CREATE TABLE cars (
 
 CREATE TABLE orders(
     id UUID PRIMARY KEY,
-    car_id UUID NOT NULL,
-    amount VARCHAR(120) NOT NULL,
+    old_price_offered INT,
+    new_price_offered INT NOT NULL,
     status VARCHAR(120) NOT NULL,
-    buyer UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE
+    buyer UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    car_id UUID NOT NULL REFERENCES cars (id) ON DELETE CASCADE
 );

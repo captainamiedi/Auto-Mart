@@ -32,10 +32,10 @@ import { Pool } from 'pg';
 // }
 let conString;
 const devConString = {
-  user: 'bright',
+  user: 'postgres',
   host: '127.0.0.1',
-  database: 'AutoMart',
-  password: '1NIGeria',
+  database: 'automart',
+  password: 'postgres',
   port: 5432,
 };
 
@@ -43,7 +43,7 @@ const devTestConString = {
   user: 'postgres',
   host: '127.0.0.1',
   database: 'db_test',
-  password: '1NIGeria',
+  password: 'postgres',
   port: 5432,
 };
 

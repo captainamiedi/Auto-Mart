@@ -3,7 +3,6 @@ import db from '../../model/db/config';
 import { orderResponseMsg } from '../../utils/helpers';
 
 
-// eslint-disable-next-line import/prefer-default-export
 export const purchase = async (req, res) => {
   const getPriceQuery = 'SELECT id FROM cars WHERE id = $1';
 

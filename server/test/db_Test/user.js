@@ -10,11 +10,11 @@ chai.should();
 //console.log(process.env.NODE_ENV, 'testing.........');
 
 const user = {
-  id: '888ac18b-a04b-40b7-b57e-e550496e8323',
+  //id: '888ac18b-a04b-40b7-b57e-e550496e8323',
   first_name: 'math',
   last_name: 'peter',
-  email: 'test13@gmail.com',
-  password: '12345678aB@',
+  email: 'test22@gmail.com',
+  password: '1NIGeria@',
   address: '10 james street',
   is_admin: true,
 };

@@ -80,19 +80,19 @@ export const specific_car = async (req, res) => {
   }
 }; 
 
-export const view_status = async (req, res) => {
-  const view = 'SELECT * FROM cars WHERE status =$1';
-  const value = [req.query];
+// export const view_status = async (req, res) => {
+//   const view = 'SELECT * FROM cars WHERE status =$1';
+//   const value = [req.query];
 
-  try {
-    console.log(value);
-    const result = await db.query(view, [req.query.status]);
-    return carResponseMsg(res, 200, 'successful', result.rows);
-    //console.log(result);
-  } catch (error) {
-    return res.status(400).json(error);
-  }
-};
+//   try {
+//     console.log(value);
+//     const result = await db.query(view, [req.query.status]);
+//     return carResponseMsg(res, 200, 'successful', result.rows);
+//     //console.log(result);
+//   } catch (error) {
+//     return res.status(400).json(error);
+//   }
+// };
 
 export const view_status_price = async (req, res) => {
   const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3';
@@ -110,7 +110,7 @@ export const view_status_price = async (req, res) => {
       //console.log(viewStatus.rows, '1st case');
       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
     }
-    console.log(value, 'hjghjjgjd....');
+    //console.log(value, 'hjghjjgjd....');
     if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
       //console.log(value);
       const result = await db.query(view, value);
@@ -128,6 +128,18 @@ export const view_all = async (req, res) => {
   try {
     const result = await db.query(query);
     return carResponseMsg(res, 200, 'successful', result.rows);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+};
+
+export const delete_car = async (req, res) => {
+  const query = 'DELETE FROM cars WHERE id = $1';
+  const value = [req.params.id];
+
+  try {
+    const result = await db.query(query, value);
+    return carResponseMsg(res, 200, 'Car Ads successful deleted');
   } catch (error) {
     return res.status(400).json(error);
   }

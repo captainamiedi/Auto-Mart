@@ -26,6 +26,12 @@ export const orderResponseMsg = (res, status, message, order) => res.status(stat
   order,
 });
 
+export const flagResponseMsg = (res, status, message, order) => res.status(status).json({
+  status,
+  message,
+  order,
+});
+
 
 // const storage = multer.diskStorage({
 //   filename: (req, file, next) => {

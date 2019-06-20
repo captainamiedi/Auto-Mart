@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
       email: response.rows[0].email,
       id: response.rows[0].id,
       is_admin: response.rows[0].is_admin,
-    }, 'bright', { expiresIn: '12h'});    
+    }, 'bright', { expiresIn: '12h' });
     console.log(token, 'token working........');
     const data = {
       token,
@@ -48,7 +48,7 @@ export const signup = async (req, res) => {
     const respMessage = 'User signup successful';
     return userResponseMsg(res, 201, respMessage, data);
   } catch (error) {
-    //console.log(error, 'erring.......');
+    console.log(error, 'erring.......');
     return res.status(404).json(error);
   }
 };
@@ -73,7 +73,7 @@ export const login = async (req, res) => {
       email: foundUser.rows[0].email,
       id: foundUser.rows[0].id,
       is_admin: foundUser.rows[0].is_admin,
-    }, 'bright', { expiresIn: '12h'});
+    }, 'bright', { expiresIn: '12h' });
     const data = {
       token,
       id: foundUser.rows[0].id,

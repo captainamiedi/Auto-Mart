@@ -2,17 +2,17 @@ import uuidv4 from 'uuid';
 import db from '../../model/db/config';
 import { carResponseMsg } from '../../utils/helpers';
 
-export const car_sale = async (req, res) =>{
+export const car_sale = async (req, res) => {
   //const selectUser = 'SELECT id FROM users WHERE email = $1';
   // const email = [req.body.email];
-  const carSaleQuery = 'INSERT INTO cars (id, state, status, price, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
- 
+  const carSaleQuery = 'INSERT INTO cars (id, state, image, price, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+
 
   try {
     const values = [
       uuidv4(),
       req.body.state,
-      req.body.status,
+      req.body.image,
       req.body.price,
       req.body.manufacturer,
       req.body.model,
@@ -24,7 +24,7 @@ export const car_sale = async (req, res) =>{
     //console.log(result);
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
   } catch (error) {
-    //console.log(error);
+    console.log(error);
     return res.status(400).json(error);
   }
 };
@@ -78,7 +78,7 @@ export const specific_car = async (req, res) => {
   } catch (error) {
     return res.status(400).json(error);
   }
-}; 
+};
 
 // export const view_status = async (req, res) => {
 //   const view = 'SELECT * FROM cars WHERE status =$1';
@@ -95,8 +95,10 @@ export const specific_car = async (req, res) => {
 // };
 
 export const view_status_price = async (req, res) => {
+  const query = 'SELECT * FROM cars';
   const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3';
   const viewStatusQuery = 'SELECT * FROM cars WHERE status =$1';
+  const stateQuery = 'SELECT * FROM cars WHERE status = $1 AND state = $2';
   const value = [
     req.query.status,
     req.query.min_price,
@@ -107,16 +109,21 @@ export const view_status_price = async (req, res) => {
     console.log(req.query.status);
     if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
       const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
-      //console.log(viewStatus.rows, '1st case');
       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
     }
-    //console.log(value, 'hjghjjgjd....');
     if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
-      //console.log(value);
       const result = await db.query(view, value);
-      //console.log(result.rows, '2nd case');
       return carResponseMsg(res, 200, 'successful', result.rows);
-    //console.log(result);
+    }
+    if ((req.query.status === 'available') && (req.query.state === 'used')) {
+      const viewState = await db.query(stateQuery, ['available', 'used']);
+      return carResponseMsg(res, 200, 'successful', viewState.rows);
+    }
+    if (req.authData.is_admin === 'true') {
+      const resultAll = await db.query(query);
+      return carResponseMsg(res, 200, 'successful', resultAll.rows);
+    } if (req.authData.is_admin === 'false') {
+      return carResponseMsg(res, 404, 'fail', 'you are not an admin');
     }
   } catch (error) {
     return res.status(400).json(error);

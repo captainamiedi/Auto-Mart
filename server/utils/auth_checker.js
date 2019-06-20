@@ -9,6 +9,7 @@ const authChecker = (req, res, next) => {
     console.log(decode);
     next();
   } catch (error) {
+    console.log(error);
     return responseMsg(res, 401, 'fail', 'Authentication Failed');
   }
 };

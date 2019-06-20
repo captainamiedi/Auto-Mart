@@ -15,6 +15,7 @@ import {
   loginValidator,
   carSaleValidator,
 } from '../utils/validate';
+import flag from '../controller/dbController/flag';
 
 
 const router = express.Router();
@@ -28,11 +29,7 @@ router.post('/api/v1/signup', signupValidator, signup);
 router.post('/api/v1/login', loginValidator, login);
 router.get('/api/v1/car/:car_id', authCheck, specific_car);
 router.get('/api/v1/car', authCheck, view_status_price);
-router.get('/api/v1/all', authCheck, view_all);
+router.post('/api/v1/flag', authCheck, flag);
 router.delete('/api/v1/car/:id', authCheck, delete_car);
-// router.get('/api/v1/login', (req, res)=>{
-//   res.status(200).json({
 
-//   });
-// });
 export default router;

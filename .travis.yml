@@ -5,12 +5,12 @@ node_js:
 install: npm install
  services:
    - postgresql
-# # env:
-# #   - NODE_ENV=test
- before_script:
-#   # - psql -c 'drop database if exists db_test;' -U postgres
-   - psql -c 'create database db_test;' -U postgres
-#   # - cat ./server/model/db/test.sql | psql -h localhost -U postgres db_test
-   - psql -c "CREATE USER AutoMart WITH PASSWORD '1NIGeria';" -U postgres
+env:
+  - NODE_ENV=test
+#  before_script:
+#   - psql -c 'drop database if exists db_test;' -U postgres
+#    - psql -c 'create database db_test;' -U postgres
+#   - cat ./server/model/db/test.sql | psql -h localhost -U postgres db_test
+#    - psql -c "CREATE USER automart WITH PASSWORD 'postgres';" -U postgres
 script: npm run test
 after_success: npm run coverage

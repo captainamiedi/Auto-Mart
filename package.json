@@ -8,7 +8,8 @@
     "create_test_db": "PGPASSWORD=postgres psql -U postgres -f ./server/model/db/db_test.sql",
     "test": "npm run create_test_db && export NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
     "build": "babel ./server/index.js --out-dir build",
-    "start": "nodemon --exec babel-node ./server/index.js",
+    "start": "babel-node ./server/index.js",
+    "start:dev": "nodemon --exec babel-node ./server/index.js",
     "coverage": "npm run test && nyc report --reporter=lcov --reporter=text ||"
   },
   "repository": {
@@ -37,11 +38,13 @@
     "make-runnable": "^1.3.6",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.3.0",
-    "nodemon": "^1.19.0",
     "nyc": "14.1.1"
   },
   "dependencies": {
+    "nodemon": "^1.19.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",

@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-//import multer from 'multer';
-// import cloudinary from 'cloudinary';
+
 
 export const responseMsg = (res, status, message, data) => res.status(status).json({
   status,

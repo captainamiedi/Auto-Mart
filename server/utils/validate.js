@@ -46,9 +46,6 @@ export const signupValidator = (req, res, next) => {
   if (!password || !password.trim()) {
     return responseMsg(res, 400, 'fail', 'password is required');
   }
-  // if (!location || !location.trim()) {
-  //   return responseMsg(res, 400, 'fail', 'password is required');
-  // }
   if (!isValidEmail(email)) {
     return responseMsg(res, 400, 'fail', 'email is not valid');
   }
@@ -111,6 +108,7 @@ export const carSaleValidator = (req, res, next) => {
   const {
     model, manufacturer, price, state, body_type,
   } = req.body;
+  console.log(req.body, 'body');
   if (!model || !model.trim()) {
     return responseMsg(res, 400, 'fail', 'car model is required');
   }
@@ -127,11 +125,21 @@ export const carSaleValidator = (req, res, next) => {
     return responseMsg(res, 400, 'fail', 'car body_type is required');
   }
   next();
-}; 
+};
 
 export const updateValidator = (req, res, next) => {
   if (!req.body.status || !req.body.status.trim()) {
     return responseMsg(res, 400, 'fail', 'status is required');
   }
+  next();
+};
+
+export const urlParamsChecker = (req, res, next) => {
+  const { id } = req.params;
+
+  if (!uuidChecker(id)) {
+    return responseMsg(res, 400, 'fail', 'url params id is not valid');
+  }
+
   next();
 };

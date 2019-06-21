@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "create_db": "psql -U postgres -f ./server/model/db/db.sql",
-    "create_test_db": "psql -U postgres -f ./server/model/db/db_test.sql",
-    "test": "npm run create_test_db && set NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
+    "create_test_db": "PGPASSWORD=postgres psql -U postgres -f ./server/model/db/db_test.sql",
+    "test": "npm run create_test_db && export NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
     "build": "babel ./server/index.js --out-dir build",
     "start": "nodemon --exec babel-node ./server/index.js",
-    "coverage": "nyc report --reporter=lcov --reporter=text"
+    "coverage": "npm run test && nyc report --reporter=lcov --reporter=text ||"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",

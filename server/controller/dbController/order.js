@@ -11,7 +11,7 @@ export const purchase = async (req, res) => {
 
   try {
     const foundCar = await db.query(getPriceQuery, valueId);
-    console.log(foundCar.rows[0]);
+    console.log(foundCar, 'oim here.......');
     const values = [
       uuidv4(),
       foundCar.rows[0].id,
@@ -19,11 +19,15 @@ export const purchase = async (req, res) => {
       req.body.price,
       req.authData.id,
     ];
+    if (!req.authData.id) {
+      return orderResponseMsg(res, 401, 'fail', 'user unauthorise');
+    }
     console.log(req.authData.id, 'working......');
     const result = await db.query(createOrderQuery, values);
     console.log(result);
     return orderResponseMsg(res, 201, 'order successful', result.rows[0]);
   } catch (error) {
+    console.log(error, 'order .......');
     return res.status(400).json(error);
   }
 };

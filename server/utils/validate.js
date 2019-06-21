@@ -109,7 +109,7 @@ export const loginValidator = (req, res, next) => {
 
 export const carSaleValidator = (req, res, next) => {
   const {
-    model, manufacturer, price, state, status, body_type,
+    model, manufacturer, price, state, body_type,
   } = req.body;
   if (!model || !model.trim()) {
     return responseMsg(res, 400, 'fail', 'car model is required');
@@ -128,3 +128,10 @@ export const carSaleValidator = (req, res, next) => {
   }
   next();
 }; 
+
+export const updateValidator = (req, res, next) => {
+  if (!req.body.status || !req.body.status.trim()) {
+    return responseMsg(res, 400, 'fail', 'status is required');
+  }
+  next();
+};

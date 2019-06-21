@@ -7,40 +7,27 @@ import app from '../../index';
 chai.use(chaiHttp);
 chai.should();
 
-//console.log(process.env.NODE_ENV, 'testing.........');
-
 const user = {
-  //id: '888ac18b-a04b-40b7-b57e-e550496e8323',
   first_name: 'math',
   last_name: 'peter',
-  email: 'test22@gmail.com',
+  email: 'test1111@gmail.com',
   password: '1NIGeria@',
   address: '10 james street',
   is_admin: true,
 };
 
-// describe('API for AutoMart', ()=> {
-//   before(()=>{
-
-//   });
-//   after(()=>{
-
-//   });
-// });
-
 describe('USERS SIGNUP', () => {
-  it('should allow user signup', (done)=> {
+  it('should allow user signup', (done) => {
     chai.request(app)
       .post('/api/v1/signup')
       .send(user)
-      .end((err, res)=> {
-        //console.log(res.body, 'response.body');
+      .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a('object');
         done();
       });
   });
-  it('should not allow user signup without email', (done)=> {
+  it('should not allow user signup without email', (done) => {
     chai.request(app)
       .post('/api/v1/signup')
       .send({
@@ -49,13 +36,13 @@ describe('USERS SIGNUP', () => {
         email: '',
         password: '1234gA@2',
       })
-      .end((err, res)=> {
+      .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });
   });
-  it('should not allow user signup without password', (done)=> {
+  it('should not allow user signup without password', (done) => {
     chai.request(app)
       .post('/api/v1/signup')
       .send({
@@ -64,7 +51,7 @@ describe('USERS SIGNUP', () => {
         email: 'test11@gmail.com',
         password: '',
       })
-      .end((err, res)=> {
+      .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
         done();
@@ -72,12 +59,12 @@ describe('USERS SIGNUP', () => {
   });
 });
 
-describe('LOGIN USER', ()=>{
-  it('should allow user to login', (done)=>{
+describe('LOGIN USER', () => {
+  it('should allow user to login', (done) => {
     chai.request(app)
       .post('/api/v1/login')
       .send(user)
-      .end((err, res)=>{
+      .end((err, res) => {
         res.should.have.status(200);
         done();
       });
@@ -89,7 +76,7 @@ describe('LOGIN USER', ()=>{
         email: 'test11@gmail.com',
         password: '',
       })
-      .end((err, res)=>{
+      .end((err, res) => {
         res.should.have.status(400);
         done();
       });
@@ -101,7 +88,7 @@ describe('LOGIN USER', ()=>{
         email: '',
         password: '12345678aB@',
       })
-      .end((err, res)=>{
+      .end((err, res) => {
         res.should.have.status(400);
         done();
       });

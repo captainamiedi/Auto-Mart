@@ -37,7 +37,7 @@ export const signup = async (req, res) => {
       id: response.rows[0].id,
       is_admin: response.rows[0].is_admin,
     }, 'bright', { expiresIn: '12h' });
-    console.log(token, 'token working........');
+    // console.log(token, 'token working........');
     const data = {
       token,
       id: response.rows[0].id,
@@ -48,7 +48,7 @@ export const signup = async (req, res) => {
     const respMessage = 'User signup successful';
     return userResponseMsg(res, 201, respMessage, data);
   } catch (error) {
-    console.log(error, 'erring.......');
+    // console.log(error, 'erring.......');
     return res.status(404).json(error);
   }
 };
@@ -61,9 +61,8 @@ export const login = async (req, res) => {
   ];
   try {
     const foundUser = await db.query(getLoginUser, valueLog);
-    //console.log(foundUser, 'na so ....');
-    if (!foundUser.rows.length === 0) {
-      return responseMsg(res, 404, 'fail', 'Email not found');
+    if (foundUser.rows.length === 0) {
+      return responseMsg(res, 401, 'fail', 'Email not found');
     }
     const comparePassword = await bcrypt.compare(password, foundUser.rows[0].password);
     if (comparePassword === false) {

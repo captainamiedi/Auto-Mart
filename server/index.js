@@ -4,9 +4,12 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
 import orderRouter from './routes/order';
 import { cloudinaryConfig } from './utils/cloudinaryConfig';
 //import buyerRoutes from '../server/routes/index';
+
+const swaggerDoc = require('./swagger.json');
 
 dotenv.config();
 
@@ -21,6 +24,7 @@ app.use('*', cloudinaryConfig);
 // routes handling
 //app.use('/buyer', buyerRoutes);
 app.use('/', orderRouter);
+app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 // app.post('/upload', multerUploads, (req, res) => {
 //   console.log('req.body :', req.body);
 // });

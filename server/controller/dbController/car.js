@@ -20,11 +20,14 @@ export const car_sale = async (req, res) => {
       new Date(),
       req.authData.id,
     ];
+    if (!req.authData.id) {
+      return carResponseMsg(res, 401, 'fail', 'user unauthorise');
+    }
     const result = await db.query(carSaleQuery, values);
-    //console.log(result);
+    // console.log(result, 'result...');
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
   } catch (error) {
-    console.log(error);
+    // console.log(error, 'error---===:::::');
     return res.status(400).json(error);
   }
 };
@@ -38,32 +41,36 @@ export const mark_sold = async (req, res) => {
   ];
   try {
     const result = await db.query(updateMarkQuery, values);
-    console.log(result);
+    //console.log(result);
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
+    //console.log(error, 'contolller.......');
     return res.status(400).json(error);
   }
 };
 
 export const update_car_price = async (req, res) => {
-  const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 RETURNING *';
+  const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 AND owner_id = $3 RETURNING *';
   const values = [
     req.body.price,
     req.params.id,
+    req.authData.id,
   ];
   try {
     const result = await db.query(updatePriceQuery, values);
+    console.log(result.rows, 'contoller resuult........');
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
+    //console.log(error, 'controller.........');
     return res.status(400).json(error);
   }
 };
 
 export const specific_car = async (req, res) => {
-  const query = 'SELECT * FROM cars WHERE id = $1';
+  const query = 'SELECT * FROM cars WHERE id = $1 AND owner_id =$2';
   //const viewQuery = 'SELECT * FROM cars where status = $1';
   //const viewValues = [req.query];
-  const values = [req.params.car_id];
+  const values = [req.params.car_id, req.authData.id];
 
   try {
     // const result = await db.query(query, values);
@@ -73,9 +80,10 @@ export const specific_car = async (req, res) => {
     //   return carResponseMsg(res, 200, 'successful', viewStatus.rows[0]);
     // } 
     const result = await db.query(query, values);
-    console.log(result.rows);
+    //console.log(result.rows, 'result oooooooooo');
     return carResponseMsg(res, 200, 'successful', result.rows[0]);
   } catch (error) {
+    //console.log(error, 'controller.....');
     return res.status(400).json(error);
   }
 };
@@ -115,11 +123,11 @@ export const view_status_price = async (req, res) => {
       const result = await db.query(view, value);
       return carResponseMsg(res, 200, 'successful', result.rows);
     }
-    if ((req.query.status === 'available') && (req.query.state === 'used')) {
+    if ((req.query.status === 'available') && (req.query.state === 'new')) {
       const viewState = await db.query(stateQuery, ['available', 'used']);
       return carResponseMsg(res, 200, 'successful', viewState.rows);
     }
-    if (req.authData.is_admin === 'true') {
+    if (req.authData.is_admin === true) {
       const resultAll = await db.query(query);
       return carResponseMsg(res, 200, 'successful', resultAll.rows);
     } if (req.authData.is_admin === 'false') {

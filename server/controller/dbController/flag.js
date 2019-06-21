@@ -8,6 +8,7 @@ const flag = async (req, res) => {
 
   try {
     const response = await db.query(getQuery, [req.body.car_id]);
+    console.log(response.rows, 'flag controller......');
     const value = [
       uuidv4(),
       new Date(),
@@ -16,9 +17,9 @@ const flag = async (req, res) => {
       response.rows[0].id,
     ];
     const result = await db.query(query, value);
-    return flagResponseMsg(res, 200, 'success', result.rows[0]);
+    return flagResponseMsg(res, 201, 'success', result.rows[0]);
   } catch (error) {
-    //console.log(error);
+    console.log(error, 'flag error.........');
     return res.status(400).json(error);
   }
 };

@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index';
@@ -72,7 +74,7 @@ describe('CREATE ORDERS AND CAR ADS', () => {
 });
 
 describe('UPDATE ORDERS AND CARS INFORMATION', () => {
-  it('should user update purchase price', (done) =>{
+  it('should user update purchase price', (done) => {
     const id = 1;
     chai.request(app)
       .patch(`/api/v1/order/${id}/price`)
@@ -82,7 +84,7 @@ describe('UPDATE ORDERS AND CARS INFORMATION', () => {
         done();
       });
   });
-  it('should user update car price', (done) =>{
+  it('should user update car price', (done) => {
     const id = 1;
     chai.request(app)
       .patch(`/api/v1/car/${id}/price`)
@@ -92,7 +94,7 @@ describe('UPDATE ORDERS AND CARS INFORMATION', () => {
         done();
       });
   });
-  it('should user update car status', (done) =>{
+  it('should user update car status', (done) => {
     const id = 1;
     chai.request(app)
       .patch(`/api/v1/car/${id}/status`)
@@ -105,7 +107,7 @@ describe('UPDATE ORDERS AND CARS INFORMATION', () => {
 });
 
 describe('DELETE A SPECIFIC CAR', () => {
-  it('should user delete a specific car', (done) =>{
+  it('should user delete a specific car', (done) => {
     const id = 1;
     chai.request(app)
       .delete(`/api/v1/cars/${id}`)

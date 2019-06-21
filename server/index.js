@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   next(error);
 });
 
-app.use((error, req, res, next)=>{
+app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({
     error: {
@@ -41,8 +41,10 @@ app.use((error, req, res, next)=>{
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`server listening on port ${port}`);
-});
+if (!module.parent) {
+  app.listen(port, () => {
+    console.log(`server listening on port ${port}`);
+  });
+}
 
 export default app;

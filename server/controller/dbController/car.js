@@ -1,5 +1,7 @@
 import uuidv4 from 'uuid';
 import db from '../../model/db/config';
+import { uploader } from '../../utils/cloudinaryConfig';
+import { dataUri } from '../../utils/imageUpload';
 import { carResponseMsg } from '../../utils/helpers';
 
 export const car_sale = async (req, res) => {
@@ -9,10 +11,21 @@ export const car_sale = async (req, res) => {
 
 
   try {
+    let image;
+    if (!req.authData.id) {
+      return carResponseMsg(res, 401, 'fail', 'user unauthorise');
+    }
+    if (req.file) {
+      const file = dataUri(req).content;
+      image = await uploader.upload(file);
+    }
+
+    console.log(image, 'image....');
+
     const values = [
       uuidv4(),
       req.body.state,
-      req.body.image,
+      image.secure_url,
       req.body.price,
       req.body.manufacturer,
       req.body.model,
@@ -20,9 +33,7 @@ export const car_sale = async (req, res) => {
       new Date(),
       req.authData.id,
     ];
-    if (!req.authData.id) {
-      return carResponseMsg(res, 401, 'fail', 'user unauthorise');
-    }
+
     const result = await db.query(carSaleQuery, values);
     // console.log(result, 'result...');
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);

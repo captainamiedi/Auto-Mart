@@ -32,4 +32,6 @@ pool.on('connect', () => {
   console.log(`database connected successfully to ${process.env.NODE_ENV}`);
 });
 
+
+//export { cloudinaryConfig, uploader };
 export default pool;

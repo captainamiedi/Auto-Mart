@@ -17,14 +17,15 @@ import {
   updateValidator,
 } from '../utils/validate';
 import flag from '../controller/dbController/flag';
+import { multerUploads } from '../utils/imageUpload';
 
 
 const router = express.Router();
 
 router.post('/api/v1/order', authCheck, purchase);
-router.post('/api/v1/car', carSaleValidator, authCheck, car_sale);
+router.post('/api/v1/car', multerUploads, authCheck, carSaleValidator, car_sale);
 router.patch('/api/v1/order/:id/price', update_price);
-router.patch('/api/v1/car/:id/status', updateValidator, authCheck, mark_sold);
+router.patch('/api/v1/car/:id/status', authCheck, updateValidator, mark_sold);
 router.patch('/api/v1/car/:id/price', authCheck, update_car_price);
 router.post('/api/v1/signup', signupValidator, signup);
 router.post('/api/v1/login', loginValidator, login);

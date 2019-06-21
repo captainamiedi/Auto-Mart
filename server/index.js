@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import orderRouter from './routes/order';
-//import order from './controller/order';
+import { cloudinaryConfig } from './utils/cloudinaryConfig';
 //import buyerRoutes from '../server/routes/index';
 
 dotenv.config();
@@ -14,12 +14,16 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use('*', cloudinaryConfig);
 // routes handling
 //app.use('/buyer', buyerRoutes);
 app.use('/', orderRouter);
+// app.post('/upload', multerUploads, (req, res) => {
+//   console.log('req.body :', req.body);
+// });
 //app.get('/api/v1/order/:id', order.getOne);
 //app.post('/api/v1/order', order.create);
 

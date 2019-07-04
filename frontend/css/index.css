@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,500,700');
+
+body{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin: 0 auto;
+}
+/* HEADER SECTION */
+header{
+    background-color: #333333;
+}
+div .auto a{
+    text-decoration: none;
+    color: #99FA9C;
+    padding-right: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+div.container{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.auto{
+    padding-top: 15px;
+    padding-left: 50px;
+}
+.carousel h3{
+    position: absolute;
+    top: 90px;
+    left: 35%;
+    text-transform: uppercase;
+    color: forestgreen;
+    font-style: italic;
+}
+
+nav{
+    list-style: none;
+}
+nav li {
+    display: inline-flex;
+    padding: 0px 10px;
+}
+nav li a {
+    text-decoration: none;
+    color: #99FA9C;
+    padding-right: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+/*button.sell{
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+button.Reg{
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+button.Sign{
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+* {box-sizing: border-box}
+/* Full-width input fields */
+  input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+
+
+/* Set a style for all buttons */
+ nav  li button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+.carousel{
+    height: auto;
+    text-align: center;;
+    padding: 0 10px 10px 10px;
+}
+.carousel img{
+    height: auto;
+    position: relative;
+    opacity: 0.7;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* SEARCH */
+.search{
+    padding: 10px;
+    text-align: center;  
+}
+.search .search-bar{
+    width: 100%;
+    background: transparent;
+    background-color: rgba(0,0,0,.2);
+    height: 100px;
+    background-size: cover;
+
+}
+.search input{
+    transform: translate(0%, 70%);
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 17px;
+    width: 50%;
+    height: 30px;
+}
+.search button {
+    width: 10%;
+    padding: 5px;
+    background: #4CAF50;
+    color: white;
+    font-size: 14px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    transform: translate(-5%, 74%);
+    padding: 12px;
+}
+  
+.search button:hover {
+    background: #0b7dda;
+}
+/* VIEW CARS*/
+.view-cars{
+    height: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+/*.column {
+    float: left;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+.column1 {
+    float: left;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+.column2 {
+    float: right;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}*/
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px 5px 0 5px;
+}
+.view-container {
+    padding: 0 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.view-container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.price {
+    color: grey;
+    font-size: 22px;
+}
+/*button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}*/
+  
+.button:hover {
+    background-color: #555;
+}
+.btn-views a{
+    text-decoration: none;
+    color: #99FA9C;;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.card-img img{
+    object-fit: cover;
+    width: 100%;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+.card-img{
+    padding-top: 5px;
+}
+.price {
+    color: grey;
+    font-size: 22px;
+  }
+.view-cars .card button:hover {
+    opacity: 0.7;
+  }
+.view-cars .card button:hover {
+    opacity: 0.7;
+  }
+.view-cars .card button:hover {
+    opacity: 0.7;
+  }
+.view-cars img{
+    width: 90%;
+    height: 200px;
+}
+.view-cars button{
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+
+.row{
+    text-align: center;
+}
+.btn-view-all{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.btn-view-all button{
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 10px;
+    border-radius: 4px
+}
+.btn-view-all button a{
+    text-decoration: none;
+    color: #fff;
+}
+.btn-view-all button:hover{
+    background-color: #333333;
+    opacity: 0.7;
+}
+.footer-content{
+   color: #fff;
+   width: 100%;
+   height: auto;
+   padding-top: 10px;
+   text-align: center;
+}
+footer{
+    background: #000 none repeat scroll 0 0;
+    padding: 17px 10px 10px;
+}
+
+@media only screen and (max-width:740px) {
+    div.container {
+        display: inline;
+        padding: 0 0;
+        text-align: center;
+    }
+    nav  li button{
+        font-size: 12px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 6px 10px;
+    }
+    nav {
+        text-align: center;
+        padding-left: 7px;
+        padding-right: 25px;
+        display: flex;
+        justify-content: space-between;
+    }
+    nav li a {
+        font-size: 14px;
+        padding-left: 6px;
+    }
+    .auto{
+        font-size: 16px;
+    }
+    .carousel h3{
+        text-align: center;
+        left: 15%;
+        top: 64px;
+    }
+    div.search-bar button {
+        width: 20%;
+    }
+}

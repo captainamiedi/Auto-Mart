@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+body{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin: 0 auto;
+}
+header{
+    background-color: #333333;
+}
+div a {
+    text-decoration: none;
+    color: #99FA9C;
+    padding-right: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+div.header-container{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.auto{
+    padding-top: 15px;
+}
+nav{
+    list-style: none;
+}
+nav li {
+    display: inline-flex;
+    padding: 0px 10px;
+}
+nav  li button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+  
+button:hover {
+    opacity:1;
+}
+
+div.btn-view{
+    display: flex;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 25px;
+    border-radius: 10px;
+}
+.view-words{
+    padding-left: 40px
+}
+.view-words h1{
+    font-size: 25px;
+    margin-top: 11px
+}
+.view-words h6{
+    font-size: 12px;
+}
+.view-words a p{
+    margin: 0 0 10px;
+    font-size: 14px;
+    padding-bottom: 10px;
+    text-transform: initial;
+}
+.view-words a{
+    text-decoration: none;
+    color: #000;
+}
+a.btn-default{
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.view-img img{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    border-radius: 6px;
+}
+    .footer-content{
+    color: #fff;
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+    text-align: center;
+}
+footer{
+    background: #000 none repeat scroll 0 0;
+    padding: 17px 10px 10px;
+}
+
+@media only screen and (max-width:740px) {
+    div.header-container {
+        display: inline;
+        padding: 0 0;
+        text-align: center;
+    }
+    nav  li button{
+        font-size: 12px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 6px 10px;
+    }
+    nav {
+        text-align: center;
+        padding-left: 7px;
+        padding-right: 25px;
+        display: flex;
+        justify-content: space-between;
+    }
+    nav li a {
+        font-size: 14px;
+        padding-left: 6px;
+    }
+    .auto{
+        font-size: 16px;
+    }
+    .view-img{
+        display: block;
+    }
+    .view-words{
+
+    }
+    div.btn-view{
+        display: block;
+    }
+}
+    

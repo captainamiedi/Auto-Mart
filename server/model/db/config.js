@@ -7,7 +7,7 @@ const devConString = {
   user: 'postgres',
   host: '127.0.0.1',
   database: 'automart',
-  password: 'postgres',
+  password: '1NIGeria',
   port: 5432,
 };
 
@@ -15,7 +15,7 @@ const devTestConString = {
   user: 'postgres',
   host: '127.0.0.1',
   database: 'db_test',
-  password: 'postgres',
+  password: '1NIGeria',
   port: 5432,
 };
 

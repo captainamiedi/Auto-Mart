@@ -24,25 +24,29 @@
             <p class="sell">sell your vehicle</p>
             <h3>Your Car Details</h3>
             <form action="">
-                <div class="name">
-                        <label for="">make</label>
-                        <input type="text" placeholder="car make">
-                </div>
                 <div class="model">
                         <label for="">model</label>
-                        <input type="text" placeholder="model">
+                        <input type="text" placeholder="model" id="model">
                 </div>
-                <div class="man">
+                <div class="manufacturer">
                     <label for="">manufacturer</label>
-                    <input type="text" placeholder="manufacturer">
-                </div>
-                <div class="condition">
-                    <label for="">condition</label>
-                    <input type="text" placeholder="condtion of your vehicle">
+                    <input type="text" placeholder="manufacturer" id="manufacturer">
                 </div>
                 <div class="price">
                     <label for="">price</label>
-                    <input type="text" placeholder="price">
+                    <input type="text" placeholder="price" id="price">
+                </div>
+                <div class="state">
+                    <label for="">state (new or used)</label>
+                    <input type="text" placeholder="state" id="state">
+                </div>
+                <div class="satus">
+                    <label for="">status</label>
+                    <input type="text" placeholder="status" id="status">
+                </div>
+                <div class="body_type">
+                    <label for="">body_type</label>
+                    <input type="text" placeholder="body_type" id="body_type">
                 </div>
             </form>
         </div>
@@ -92,7 +96,7 @@
             </form>
     </div>
         <div class="submit">
-            <button class="btn-submit">submit</button>
+            <button class="btn-submit" id="btn-submit">submit</button>
         </div>
     </div>
     <footer>
@@ -116,5 +120,6 @@
             }
         });
     </script>
+    <script src="../js/postCar.js"></script>
 </body>
 </html>

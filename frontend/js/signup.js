@@ -36,6 +36,7 @@ const createUser = (event) => {
       //console.log(data);
       let { message } = data;
       const { status } = data;
+      localStorage.setItem('data', JSON.stringify(data.user.token));
       console.log(message);
       if (password !== re_type_password) {
         message = 'password does not match';
@@ -77,9 +78,10 @@ const loginUser = (e) => {
   fetch(url, options)
     .then(res => res.json())
     .then((data) => {
-      //console.log(data);
+      console.log(data);
+      console.log(data.user.token);
       let { message, status } = data;
-      localStorage.setItem('data', JSON.stringify(data.token));
+      localStorage.setItem('data', JSON.stringify(data.user.token));
       //const { status } = data;
       if (status === 400) {
         message = data.data;
@@ -91,7 +93,7 @@ const loginUser = (e) => {
         message = data.data;
       }
       alert(message);
-      if (status === 200) {
+      if (status === 201) {
         alert(message);
         window.location = './index.html';
       }

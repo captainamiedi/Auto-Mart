@@ -38,7 +38,7 @@ export const car_sale = async (req, res) => {
     // console.log(result, 'result...');
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
   } catch (error) {
-    // console.log(error, 'error---===:::::');
+    console.log(error, 'error---===:::::');
     return res.status(400).json(error);
   }
 };

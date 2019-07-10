@@ -2,6 +2,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(cors());
 app.use('*', cloudinaryConfig);
 // routes handling

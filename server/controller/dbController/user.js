@@ -79,6 +79,7 @@ export const login = async (req, res) => {
       first_name: foundUser.rows[0].first_name,
       last_name: foundUser.rows[0].last_name,
       email: foundUser.rows[0].email,
+      is_admin: foundUser.rows[0].is_admin,
     };
     const respMessage = 'User login successful';
     return userResponseMsg(res, 200, respMessage, data);

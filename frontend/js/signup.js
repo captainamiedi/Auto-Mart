@@ -65,7 +65,7 @@ const loginUser = (e) => {
   const url = 'http://localhost:3000/api/v1/login';
 
   const data = { email, password, admin};
-  //console.log(data);
+  console.log(data);
 
   const options = {
     method: 'POST',
@@ -80,7 +80,8 @@ const loginUser = (e) => {
     .then((data) => {
       console.log(data);
       console.log(data.user.token);
-      let { message, status } = data;
+      let {message, status} = data; 
+      //const status = data;
       localStorage.setItem('data', JSON.stringify(data.user.token));
       //const { status } = data;
       if (status === 400) {
@@ -93,11 +94,11 @@ const loginUser = (e) => {
         message = data.data;
       }
       alert(message);
-      if (status === 201) {
+      if (status === 200) {
         alert(message);
         window.location = './index.html';
       }
-      if (data.admin === true) {
+      if (data.user.is_admin === true) {
         window.location = './admin.html';
       }
     })

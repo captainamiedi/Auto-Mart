@@ -51,14 +51,16 @@ div.btn-view{
     border-radius: 10px;
 }
 .view-words{
-    padding-left: 40px
+    padding-left: 20%
 }
 .view-words h1{
     font-size: 25px;
-    margin-top: 11px
+    margin-top: 11px;
+    text-transform: capitalize;
 }
 .view-words h6{
     font-size: 12px;
+    text-transform: uppercase;
 }
 .view-words a p{
     margin: 0 0 10px;
@@ -70,7 +72,7 @@ div.btn-view{
     text-decoration: none;
     color: #000;
 }
-a.btn-default{
+.btn-default{
     text-decoration: none;
     background-color: #F7290D;
     color: white;
@@ -102,10 +104,13 @@ button.btn-delete{
     padding: 10px;
 }
 .footer-content{
-    background: #333333;
     color: #fff;
     width: 100%;
     height: auto;
     padding-top: 10px;
     text-align: center;
- }
+}
+footer{
+    background: #000 none repeat scroll 0 0;
+    padding: 17px 10px 10px;
+}

@@ -7,7 +7,7 @@ import { carResponseMsg } from '../../utils/helpers';
 export const car_sale = async (req, res) => {
   //const selectUser = 'SELECT id FROM users WHERE email = $1';
   // const email = [req.body.email];
-  const carSaleQuery = 'INSERT INTO cars (id, state, image, price, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+  const carSaleQuery = 'INSERT INTO cars (id, state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *';
 
 
   try {
@@ -27,6 +27,7 @@ export const car_sale = async (req, res) => {
       req.body.state,
       image.secure_url,
       req.body.price,
+      req.body.status,
       req.body.manufacturer,
       req.body.model,
       req.body.body_type,
@@ -114,10 +115,10 @@ export const specific_car = async (req, res) => {
 // };
 
 export const view_status_price = async (req, res) => {
-  const query = 'SELECT * FROM cars';
-  const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3';
-  const viewStatusQuery = 'SELECT * FROM cars WHERE status =$1';
-  const stateQuery = 'SELECT * FROM cars WHERE status = $1 AND state = $2';
+  const query = 'SELECT * FROM cars ORDER BY created_date DESC LIMIT 10';
+  const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3 ORDER BY created_date DESC LIMIT 10';
+  const viewStatusQuery = 'SELECT * FROM cars WHERE status =$1 ORDER BY created_date DESC LIMIT 10';
+  const stateQuery = 'SELECT * FROM cars WHERE status = $1 AND state = $2 ORDER BY created_date DESC LIMIT 10';
   const value = [
     req.query.status,
     req.query.min_price,

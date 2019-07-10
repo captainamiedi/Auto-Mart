@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/view-all.css">
     <title>View All</title>
 </head>
@@ -15,71 +16,50 @@
                     <a href="../html/index.html">AutoMart.com</a>
                 </div>
                 <nav>
-                    <li><a href="">Sell A Car</a></li>
+                    <li><a href="../html/postAd.html">Sell A Car</a></li>
                     <li><a href="../html/signup.html" id="button"><button class="Sign">Sign in / login</button></a></li>
                 </nav>
             </div>
         </header>
     </div>
-    <div class="container">
-        <div class="btn-view">
-            <a href="">
-                <div class="view-img">
-                    <img src="../images/car2.jpg" alt="" style="width:100%">
-                </div>
-               
-                <div class="view-words">
-                    <h1>BMW 8 Series Nigeria</h1>
-                    <h6>Post Date: 15 May 19</h6>
-                    <p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este. The stunning two-door  concept provides a glimpse...</p>
-                    <a href="#" class="btn-default">more</a>
-                </div>
-            </a>
-        </div>
-        <div class="btn-view">
-            <a href="">
-                <div class="view-img">
-                    <img src="../images/car4.jpg" alt="" style="width:100%">
-                </div>   
-                <div class="view-words">
-                    <h1>BMW 8 Series Nigeria</h1>
-                    <h6>Post Date: 15 May 19</h6>
-                    <p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este. The stunning two-door  concept provides a glimpse...</p>
-                    <a href="#" class="btn-default">more</a>
-                </div>
-            </a>
-            </div>
-            <div class="btn-view">
-                <a href="">
-                    <div class="view-img">
-                        <img src="../images/car3.jpg" alt="" style="width:100%">
-                    </div>    
-                    <div class="view-words">
-                        <h1>BMW 8 Series Nigeria</h1>
-                        <h6>Post Date: 15 May 19</h6>
-                        <p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este. The stunning two-door  concept provides a glimpse...</p>
-                        <a href="#" class="btn-default">more</a>
-                    </div>
-                </a>
-            </div>
-            <div class="btn-view">
-                    <a href="">
-                        <div class="view-img">
-                            <img src="../images/car2.jpg" alt="" style="width:100%">
-                        </div>  
-                        <div class="view-words">
-                            <h1>BMW 8 Series Nigeria</h1>
-                            <h6>Post Date: 15 May 197</h6>
-                            <p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este. The stunning two-door  concept provides a glimpse...</p>
-                            <a href="#" class="btn-default">more</a>
-                        </div>
-                    </a>
-                </div>
+    <div class="container-search" id="search-options">
+            <input type="number" placeholder="min_price" id="min_price">
+            <input type="number" placeholder="max_price" id="max_price">
+            <button id="modalBtn">search</button>
     </div>
+    <div class="container" id="btn-container">
+        
+    </div>
+        <div id="simpleModal" class="modal">
+            <div class="modal-content">
+                <span class="closeBtn">&times;</span>
+                <div id="priceId">
+                   
+                </div>
+            </div>
+        </div>
+        <!-- update cars status and price -->
+        <div id="simpleModalUpdate" class="overlay">
+            <div class="modal-content-update">
+                <span class="closeBtUpdate">&times;</span>
+                <form action="">
+                    <!-- <h2>Edit</h2>
+                    <label for="Status">New Status</label>
+                    <input type="text" placeholder="Enter New Status">
+                    <label for="price">New Price</label>
+                    <input type="text" placeholder="Enter New Price">
+                    <div class="submit-update">
+                        <button class="modal-submit-update">Submit</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
     <footer>
             <div class="footer-content">
                 <p>AutoMart &copy;2019 <span>All Rights Reserved</span></p>
             </div>
-        </footer>
+    </footer>
+    <script src="../js//viewAllCars.js"></script>
+    <script src="../js/view-more.js"></script> 
 </body>
 </html>

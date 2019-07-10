@@ -4,17 +4,19 @@ import { orderResponseMsg } from '../../utils/helpers';
 
 
 export const purchase = async (req, res) => {
-  const getPriceQuery = 'SELECT id FROM cars WHERE id = $1';
-  const valueId = [req.body.car_id];
-  const createOrderQuery = 'INSERT INTO orders (id, car_id, status, offered, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+  // const getPriceQuery = 'SELECT id, price FROM cars WHERE id = $1';
+  // const valueId = [req.body.car_id];
+  const createOrderQuery = 'INSERT INTO orders (id, car_id, status, price, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
 
 
   try {
-    const foundCar = await db.query(getPriceQuery, valueId);
-    console.log(foundCar, 'oim here.......');
+    // const foundCar = await db.query(getPriceQuery, valueId);
+    // console.log(foundCar, 'oim here.......');
+    // console.log(foundCar.rows[0].price);
     const values = [
       uuidv4(),
-      foundCar.rows[0].id,
+      // foundCar.rows[0].id,
+      req.body.car_id,
       req.body.status,
       req.body.price,
       req.authData.id,
@@ -23,6 +25,7 @@ export const purchase = async (req, res) => {
       return orderResponseMsg(res, 401, 'fail', 'user unauthorise');
     }
     console.log(req.authData.id, 'working......');
+    console.log(values);
     const result = await db.query(createOrderQuery, values);
     console.log(result);
     return orderResponseMsg(res, 201, 'order successful', result.rows[0]);

@@ -51,14 +51,16 @@ div.btn-view{
     border-radius: 10px;
 }
 .view-words{
-    padding-left: 40px
+    padding-left: 20%
 }
 .view-words h1{
     font-size: 25px;
-    margin-top: 11px
+    margin-top: 11px;
+    text-transform: capitalize;
 }
 .view-words h6{
     font-size: 12px;
+    text-transform: uppercase;
 }
 .view-words a p{
     margin: 0 0 10px;
@@ -85,7 +87,121 @@ a.btn-default{
     margin-bottom: 25px;
     border-radius: 6px;
 }
-    .footer-content{
+.modal{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+}
+.modal-content{
+    background-color: #f4f4f4;
+    margin: 50px auto;
+    padding: 35px;
+    width: 100%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+}
+.modal-content form h2 h4{
+    padding: 10px;
+}
+#simpleModal form input {
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    background: #f1f1f1;
+}
+.closeBtn{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+}
+.closeBtn:hover, .closeBtn:focus{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+form{
+    text-align: center;
+}
+form textarea{
+    height: 120px;
+}
+button.modal-submit{
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 15px;
+    color: white;
+    background-color:  #4CAF50;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.overlay{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+}
+.modal-content-update{
+    background-color: #f4f4f4;
+    margin: 50px auto;
+    padding: 35px;
+    width: 100%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+}
+.modal-content-update form h2 h4{
+    padding: 10px;
+}
+#simpleModalUpdate form input {
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    background: #f1f1f1;
+}
+.closeBtnUpdate{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+}
+.closeBtnUpdate:hover, .closeBtnUpdate:focus{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+form{
+    text-align: center;
+}
+form textarea{
+    height: 120px;
+}
+button.modal-submit-update{
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 15px;
+    color: white;
+    background-color:  #4CAF50;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+}
+a i.fas.fa-edit {
+    color: #4CAF50;
+}
+/* tr td a {
+    color: #000;
+} */
+.footer-content{
     color: #fff;
     width: 100%;
     height: auto;

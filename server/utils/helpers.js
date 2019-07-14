@@ -6,10 +6,10 @@ export const responseMsg = (res, status, message, data) => res.status(status).js
   data,
 });
 
-export const carResponseMsg = (res, status, message, car) => res.status(status).json({
+export const carResponseMsg = (res, status, message, data) => res.status(status).json({
   status,
   message,
-  car,
+  data,
 });
 
 export const userResponseMsg = (res, status, message, data) => res.status(status).json({
@@ -18,10 +18,10 @@ export const userResponseMsg = (res, status, message, data) => res.status(status
   data,
 });
 
-export const orderResponseMsg = (res, status, message, order) => res.status(status).json({
+export const orderResponseMsg = (res, status, message, data) => res.status(status).json({
   status,
   message,
-  order,
+  data,
 });
 
 export const flagResponseMsg = (res, status, message, order) => res.status(status).json({

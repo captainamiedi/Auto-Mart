@@ -27,8 +27,8 @@ router.post('/api/v1/car', multerUploads, authCheck, carSaleValidator, car_sale)
 router.patch('/api/v1/order/:order-id/price', update_price);
 router.patch('/api/v1/car/:id/status', authCheck, mark_sold);
 router.patch('/api/v1/car/:id/price', authCheck, update_car_price);
-router.post('/api/v1/auth/signup', signup);
-router.post('/api/v1/auth/signin', login);
+router.post('/auth/signup', signup);
+router.post('/auth/signin', login);
 router.get('/api/v1/car/:id', authCheck, specific_car);
 router.get('/api/v1/car', authCheck, view_status_price);
 router.get('/api/v1/user', authCheck, userHistory);

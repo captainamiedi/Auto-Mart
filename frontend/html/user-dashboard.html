@@ -34,17 +34,16 @@
         </div>
         <div class="column2">
             <h2>My Activities</h2>
-            <div class="table">
-                <table>
+            <div class="table" id="activity-table">
+                <table id="main-activity-table">
                     <tr>
                         <th></th>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Name and Model</th>
                         <th>Price</th>
                         <th>Status</th>
                         <th>Edit</th>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td><img src="../images/car2.jpg" alt=""></td>
                         <td>BMW 8 Series Nigeria</td>
                         <td><p>BMW reveals impressive Concept 8 Series BMW has revealed its beautiful 8 series concept, before its official debut at the Concorso d’Eleganza Villa d’Este.</p></td>
@@ -59,22 +58,20 @@
                         <td>&#8358;1000000</td>
                         <td><a href="">Sold</a></td>
                         <td  id="modalBtn"><a href="#simpleModal"><i class="fas fa-edit"></i></a></td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
         </div>
     </div>
     <div id="simpleModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" id="update-status">
             <span class="closeBtn">&times;</span>
-            <form action="">
-                <h2>Edit</h2>
-                <label for="Status">New Status</label>
-                <input type="text" placeholder="Enter New Status">
+            <form action="" id="update-status">
+                 <h2>Edit</h2>
                 <label for="price">New Price</label>
-                <input type="text" placeholder="Enter New Price">
+                <input type="text" placeholder="Enter New Price" id="update-price">
                 <div class="submit">
-                    <button class="modal-submit">Submit</button>
+                    <button class="modal-submit" id="modalSubmitBtn">Submit</button>
                 </div>
             </form>
         </div>
@@ -85,5 +82,7 @@
         </div>
     </footer>
     <script src="../js/view-more.js"></script>
+    <script src="../js/user-dash.js"></script>
+    <!-- <script src="../js/user-dashboard.js"></script> -->
 </body>
 </html>

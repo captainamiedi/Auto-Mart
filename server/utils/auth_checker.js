@@ -3,7 +3,7 @@ import { responseMsg } from './helpers';
 
 const authChecker = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization;
     const decode = jwt.verify(token, 'bright');
     req.authData = decode;
     // console.log(decode);

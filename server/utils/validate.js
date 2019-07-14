@@ -75,15 +75,16 @@ export const signupValidator = (req, res, next) => {
  * @param {object} next
  */
 export const loginValidator = (req, res, next) => {
-  const { email, password } = req.body;
+  const { Email, password } = req.body;
+  console.log(req.body, 'body');
 
-  if (!email || !email.trim()) {
+  if (!Email || !Email.trim()) {
     return responseMsg(res, 400, 'fail', 'email is required');
   }
   if (!password || !password.trim()) {
     return responseMsg(res, 400, 'fail', 'password is required');
   }
-  if (!isValidEmail(email)) {
+  if (!isValidEmail(Email)) {
     return responseMsg(res, 400, 'fail', 'email is not valid');
   }
   if (password.length < 8) {

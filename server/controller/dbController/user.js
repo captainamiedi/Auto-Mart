@@ -8,13 +8,13 @@ import { responseMsg, userResponseMsg } from '../../utils/helpers';
 dotenv.config();
 //eslint-disable-next-line import/prefer-default-export
 export const signup = async (req, res) => {
-  const getUserQuery = 'SELECT * FROM users WHERE email = $1';
-  const createUserQuery = 'INSERT INTO users(id, first_name, last_name, email, password, address, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) returning *';
-  const email = [req.body.email];
+  const getUserQuery = 'SELECT * FROM users WHERE Email = $1';
+  const createUserQuery = 'INSERT INTO users(id, first_name, last_name, Email, password, address, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) returning *';
+  const Email = [req.body.Email];
 
 
   try {
-    const result = await db.query(getUserQuery, email);
+    const result = await db.query(getUserQuery, Email);
     //console.log(result);
     if (result.rows[0]) {
       return responseMsg(res, 409, 'User already exist');
@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
       uuidv4(),
       req.body.first_name,
       req.body.last_name,
-      req.body.email,
+      req.body.Email,
       hashPassword,
       req.body.address,
       req.body.is_admin,
@@ -33,7 +33,7 @@ export const signup = async (req, res) => {
     //console.log(response, 'responding....');
     delete response.rows[0].password;
     const token = jwt.sign({
-      email: response.rows[0].email,
+      Email: response.rows[0].Email,
       id: response.rows[0].id,
       is_admin: response.rows[0].is_admin,
     }, 'bright', { expiresIn: '12h' });
@@ -43,7 +43,7 @@ export const signup = async (req, res) => {
       id: response.rows[0].id,
       first_name: response.rows[0].first_name,
       last_name: response.rows[0].last_name,
-      email: response.rows[0].email,
+      Email: response.rows[0].Email,
     };
     const respMessage = 'User signup successful';
     return userResponseMsg(res, 201, respMessage, data);
@@ -54,10 +54,10 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  const { email, password } = req.body;
-  const getLoginUser = 'SELECT * FROM users WHERE email = $1';
+  const { Email, password } = req.body;
+  const getLoginUser = 'SELECT * FROM users WHERE Email = $1';
   const valueLog = [
-    email,
+    Email,
   ];
   try {
     const foundUser = await db.query(getLoginUser, valueLog);
@@ -69,7 +69,7 @@ export const login = async (req, res) => {
       return responseMsg(res, 404, 'fail', 'invalid password');
     }
     const token = jwt.sign({
-      email: foundUser.rows[0].email,
+      Email: foundUser.rows[0].Email,
       id: foundUser.rows[0].id,
       is_admin: foundUser.rows[0].is_admin,
     }, 'bright', { expiresIn: '12h' });
@@ -78,7 +78,7 @@ export const login = async (req, res) => {
       id: foundUser.rows[0].id,
       first_name: foundUser.rows[0].first_name,
       last_name: foundUser.rows[0].last_name,
-      email: foundUser.rows[0].email,
+      Email: foundUser.rows[0].Email,
       is_admin: foundUser.rows[0].is_admin,
     };
     const respMessage = 'User login successful';

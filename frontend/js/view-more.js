@@ -1,11 +1,11 @@
 const modal = document.getElementById('simpleModal');
-const modalBtn = document.getElementById('modalBtn');
-console.log(modalBtn);
+// const modalBtn = document.getElementById('modalBtn');
+// console.log(modalBtn);
 const closeBtn = document.getElementsByClassName('closeBtn')[0];
-function openModal() {
-  console.log('1133');
-  modal.style.display = 'block';
-}
+// function openModal() {
+//   console.log('1133');
+//   modal.style.display = 'block';
+// }
 function closeModal() {
   modal.style.display = 'none';
 }
@@ -22,7 +22,7 @@ function changeImage(event) {
   }
 }
 
-modalBtn.addEventListener('click', openModal);
+// modalBtn.addEventListener('click', openModal);
 
 window.addEventListener('click', outsideClick);
 

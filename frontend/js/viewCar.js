@@ -22,7 +22,7 @@ const viewCars = () => {
       console.log(data);
       console.log(data.car);
       viewColumn.innerHTML = `<div class="banner-head">
-      <h2>${`${data.car.model} ${data.car.manufacturer}`}</h2>
+      <h2>${data.car.modal} ${data.car.manufacturer}</h2>
       <i class="fas fa-map-marker-alt"></i>
       <p>Lagos, Nigeria</p>
       <h3 class="price">&#8358 ${data.car.price}</h3>

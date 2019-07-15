@@ -36,7 +36,8 @@ export const car_sale = async (req, res) => {
     ];
 
     const result = await db.query(carSaleQuery, values);
-    console.log(result, 'result...');
+    console.log(result.rows, 'result...');
+    console.log(req.body);
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
   } catch (error) {
     console.log(error, 'error---===:::::');

@@ -26,6 +26,7 @@ export const purchase = async (req, res) => {
     }
     console.log(req.authData.id, 'working......');
     console.log(values);
+    console.log(req.body);
     const result = await db.query(createOrderQuery, values);
     console.log(result);
     return orderResponseMsg(res, 201, 'order successful', result.rows[0]);

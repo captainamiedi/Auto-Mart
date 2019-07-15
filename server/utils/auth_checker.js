@@ -1,15 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { responseMsg } from './helpers';
 
-const authChecker = (req, res, next) => {
-  const authorizationHeader = req.headers.authorization;
-  // let decode;
-  if (authorizationHeader) {
-    const token = req.headers.authorization.split(' ')[1];
-  }
+const authChecker = async (req, res, next) => {
+  const token = req.headers['x-access-token'];
   try {
     // console.log(token);
-    const decode = jwt.verify(token, 'bright');
+    const decode = await jwt.verify(token, 'bright');
     req.authData = decode;
     console.log(decode);
     next();

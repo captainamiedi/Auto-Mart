@@ -6,7 +6,7 @@ import express from 'express';
 //import { signup, login } from '../controller/dummy_dbController/user';
 import { signup, login } from '../controller/dbController/user';
 import {
-  car_sale, mark_sold, update_car_price, specific_car, userHistory, view_status_price, delete_car,
+  car_sale, mark_sold, specific_car, userHistory, view_status_price, delete_car,
 } from '../controller/dbController/car';
 import authCheck from '../utils/auth_checker';
 import { purchase, update_price, userHistoryOrder } from '../controller/dbController/order';
@@ -30,7 +30,7 @@ router.patch('/car/:id/status', authCheck, mark_sold);
 router.post('/auth/signup', signup);
 router.post('/auth/signin', login);
 router.get('/car/:id', authCheck, specific_car);
-router.get('/car', authCheck, view_status_price);
+// router.get('/car', authCheck, view_status_price);
 router.get('/user', authCheck, userHistory);
 router.get('/order/user', authCheck, userHistoryOrder);
 router.post('/flag', authCheck, flag);

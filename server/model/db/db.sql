@@ -28,7 +28,7 @@ CREATE TABLE cars (
 
 CREATE TABLE orders(
     id UUID PRIMARY KEY,
-    price INT NOT NULL,
+    amount INT NOT NULL,
     status VARCHAR DEFAULT 'pending',
     buyer UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE,
     car_id UUID NOT NULL REFERENCES cars (id) ON DELETE CASCADE

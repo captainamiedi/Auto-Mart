@@ -6,7 +6,7 @@ import { orderResponseMsg } from '../../utils/helpers';
 export const purchase = async (req, res) => {
   // const getPriceQuery = 'SELECT id, price FROM cars WHERE id = $1';
   // const valueId = [req.body.car_id];
-  const createOrderQuery = 'INSERT INTO orders (id, car_id, status, price, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+  const createOrderQuery = 'INSERT INTO orders (id, car_id, status, amount, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
 
 
   try {
@@ -18,7 +18,7 @@ export const purchase = async (req, res) => {
       // foundCar.rows[0].id,
       req.body.car_id,
       req.body.status,
-      req.body.price,
+      req.body.amount,
       req.authData.id,
     ];
     if (!req.authData.id) {
@@ -39,7 +39,7 @@ export const purchase = async (req, res) => {
 export const update_price = async (req, res) => {
   // const getOrderQuery = 'SELECT id, price FROM orders
   //  WHERE id = $1 AND status = $2 AND buyer = $3';
-  const updateQuery = 'UPDATE orders SET price = $1 WHERE id = $2 RETURNING *';
+  const updateQuery = 'UPDATE orders SET amount = $1 WHERE id = $2 RETURNING *';
 
   try {
     console.log(req.authData.id, 'working ......');
@@ -49,7 +49,7 @@ export const update_price = async (req, res) => {
     // }
     // console.log(response, 'response');
     const updateValue = [
-      req.body.price,
+      req.body.amount,
       // response.rows[0].id,
       req.params.id,
     ];
@@ -59,8 +59,8 @@ export const update_price = async (req, res) => {
       id: result.rows[0].id,
       car_id: result.rows[0].car_id,
       status: result.rows[0].status,
-      old_price_offered: response.rows[0].price,
-      new_price_offered: result.rows[0].price,
+      old_price_offered: response.rows[0].amount,
+      new_price_offered: result.rows[0].amount,
     };
     return orderResponseMsg(res, 201, 'order successfully updated', data);
   } catch (error) {

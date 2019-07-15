@@ -53,11 +53,12 @@ export const mark_sold = async (req, res) => {
     req.params.id,
   ];
   try {
+    console.log(values);
     const result = await db.query(updateMarkQuery, values);
     // console.log(result);
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
-    // console.log(error, 'contolller.......');
+    console.log(error, 'contolller.......');
     return res.status(400).json(error);
   }
 };
@@ -75,7 +76,7 @@ export const update_car_price = async (req, res) => {
     // console.log(result.rows, 'contoller resuult........');
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
-    // console.log(error, 'controller.........');
+    console.log(error, 'controller.........');
     return res.status(400).json(error);
   }
 };
@@ -128,11 +129,12 @@ export const view_status_price = async (req, res) => {
   ];
 
   try {
-    console.log(req.query.status);
+    console.log(req.query.status, 'get car status');
     if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
       const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
     }
+    console.log(req.query.status, req.query.min_price, 'get car status price');
     if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
       const result = await db.query(view, value);
       return carResponseMsg(res, 200, 'successful', result.rows);
@@ -141,13 +143,15 @@ export const view_status_price = async (req, res) => {
       const viewState = await db.query(stateQuery, ['available', 'used']);
       return carResponseMsg(res, 200, 'successful', viewState.rows);
     }
+    console.log(req.authData.is_admin, 'get car status admin');
     if (req.authData.is_admin === true) {
       const resultAll = await db.query(query);
       return carResponseMsg(res, 200, 'successful', resultAll.rows);
     } if (req.authData.is_admin === 'false') {
       return carResponseMsg(res, 404, 'fail', 'you are not an admin');
     }
-  } catch (error) {
+  } catch (error) { 
+    console.log(error, 'get car......');
     return res.status(400).json(error);
   }
 };
@@ -170,6 +174,7 @@ export const delete_car = async (req, res) => {
     const result = await db.query(query, value);
     return carResponseMsg(res, 200, 'Car Ads successful deleted');
   } catch (error) {
+    console.log(error, 'delete car .....');
     return res.status(400).json(error);
   }
 };

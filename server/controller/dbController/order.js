@@ -28,7 +28,7 @@ export const purchase = async (req, res) => {
     console.log(values);
     console.log(req.body, 'orders body..........');
     const result = await db.query(createOrderQuery, values);
-    console.log(result);
+    console.log(result.rows, 'order result');
     return orderResponseMsg(res, 201, 'order successful', result.rows[0]);
   } catch (error) {
     console.log(error, 'order .......');
@@ -64,7 +64,7 @@ export const update_price = async (req, res) => {
     };
     return orderResponseMsg(res, 201, 'order successfully updated', data);
   } catch (error) {
-    console.log(error);
+    console.log(error, 'update error');
     return res.status(400).json(error);
   }
 };

@@ -53,6 +53,7 @@ export const mark_sold = async (req, res) => {
     req.params.id,
   ];
   try {
+    console.log(req.body, 'marked sold');
     console.log(values);
     const result = await db.query(updateMarkQuery, values);
     // console.log(result);
@@ -71,6 +72,7 @@ export const update_car_price = async (req, res) => {
     req.authData.id,
   ];
   try {
+    console.log(req.body, 'updated price');
     console.log(values);
     const result = await db.query(updatePriceQuery, values);
     // console.log(result.rows, 'contoller resuult........');
@@ -135,7 +137,7 @@ export const view_status_price = async (req, res) => {
       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
     }
     console.log(req.query.status, req.query.min_price, 'get car status price');
-    if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
+    if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
       const result = await db.query(view, value);
       return carResponseMsg(res, 200, 'successful', result.rows);
     }

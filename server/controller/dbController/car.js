@@ -11,21 +11,21 @@ export const car_sale = async (req, res) => {
 
 
   try {
-  //   let image;
-  //   if (!req.authData.id) {
-  //     return carResponseMsg(res, 401, 'fail', 'user unauthorise');
-  //   }
-  //   if (req.file) {
-  //     const file = dataUri(req).content;
-  //     image = await uploader.upload(file);
-  //   }
+    let image;
+    if (!req.authData.id) {
+      return carResponseMsg(res, 401, 'fail', 'user unauthorise');
+    }
+    if (req.file) {
+      const file = dataUri(req).content;
+      image = await uploader.upload(file);
+    }
 
-    //   console.log(image, 'image....');
+    console.log(image, 'image....');
 
     const values = [
       uuidv4(),
       req.body.state,
-      // image.secure_url,
+      image.img_url,
       req.body.price,
       req.body.status,
       req.body.manufacturer,

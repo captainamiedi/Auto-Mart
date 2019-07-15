@@ -7,7 +7,7 @@ import { carResponseMsg } from '../../utils/helpers';
 export const car_sale = async (req, res) => {
   //const selectUser = 'SELECT id FROM users WHERE email = $1';
   // const email = [req.body.email];
-  const carSaleQuery = 'INSERT INTO cars (id, state, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+  const carSaleQuery = 'INSERT INTO cars (id, state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *';
 
 
   try {
@@ -25,7 +25,7 @@ export const car_sale = async (req, res) => {
     const values = [
       uuidv4(),
       req.body.state,
-      image.img_url,
+      req.body.img_url,
       req.body.price,
       req.body.status,
       req.body.manufacturer,

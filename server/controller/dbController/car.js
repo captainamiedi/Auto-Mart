@@ -64,24 +64,24 @@ export const mark_sold = async (req, res) => {
   }
 };
 
-export const update_car_price = async (req, res) => {
-  const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 AND owner_id = $3 RETURNING *';
-  const values = [
-    req.body.price,
-    req.params.id,
-    req.authData.id,
-  ];
-  try {
-    console.log(req.body, 'updated price');
-    console.log(values);
-    const result = await db.query(updatePriceQuery, values);
-    // console.log(result.rows, 'contoller resuult........');
-    return carResponseMsg(res, 200, 'successful update', result.rows[0]);
-  } catch (error) {
-    console.log(error, 'controller.........');
-    return res.status(400).json(error);
-  }
-};
+// export const update_car_price = async (req, res) => {
+//const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 AND owner_id = $3 RETURNING *';
+//   const values = [
+//     req.body.price,
+//     req.params.id,
+//     req.authData.id,
+//   ];
+//   try {
+//     console.log(req.body, 'updated price');
+//     console.log(values);
+//     const result = await db.query(updatePriceQuery, values);
+//     // console.log(result.rows, 'contoller resuult........');
+//     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
+//   } catch (error) {
+//     console.log(error, 'controller.........');
+//     return res.status(400).json(error);
+//   }
+// };
 
 export const specific_car = async (req, res) => {
   const query = 'SELECT * FROM cars WHERE id = $1';

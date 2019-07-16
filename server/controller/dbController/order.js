@@ -53,16 +53,17 @@ export const update_price = async (req, res) => {
       // response.rows[0].id,
       req.params.id,
     ];
+    console.log(req.body, 'order update body.....');
     const result = await db.query(updateQuery, updateValue);
-    console.log(result, 'update order......');
-    const data = {
-      id: result.rows[0].id,
-      car_id: result.rows[0].car_id,
-      status: result.rows[0].status,
-      old_price_offered: response.rows[0].amount,
-      new_price_offered: result.rows[0].amount,
-    };
-    return orderResponseMsg(res, 201, 'order successfully updated', data);
+    console.log(result.rows, 'update order......');
+    // const data = {
+    //   id: result.rows[0].id,
+    //   car_id: result.rows[0].car_id,
+    //   status: result.rows[0].status,
+    //   old_price_offered: response.rows[0].amount,
+    //   new_price_offered: result.rows[0].amount,
+    // };
+    return orderResponseMsg(res, 201, 'order successfully updated', result.rows);
   } catch (error) {
     console.log(error, 'update error');
     return res.status(400).json(error);

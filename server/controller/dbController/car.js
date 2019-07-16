@@ -57,7 +57,7 @@ export const mark_sold = async (req, res) => {
     console.log(req.body, 'marked sold');
     console.log(values);
     const result = await db.query(updateMarkQuery, values);
-    // console.log(result);
+    console.log(result.rows, 'mark_sold.........');
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
     console.log(error, 'contolller.......');
@@ -153,7 +153,7 @@ export const view_status_price = async (req, res) => {
     // console.log(req.authData.is_admin, 'get car status admin');
     // if (req.authData.is_admin === true) {
     const resultAll = await db.query(query);
-    console.log(resultAll, 'all result.....');
+    console.log(resultAll.rows, 'all result.....');
     return carResponseMsg(res, 200, 'successful', resultAll.rows);
     // } if (req.authData.is_admin === 'false') {
     // return carResponseMsg(res, 404, 'fail', 'you are not an admin');

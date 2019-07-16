@@ -8,7 +8,7 @@
     "create_test_db": "PGPASSWORD=postgres psql -U postgres -f ./server/model/db/db_test.sql",
     "test": "npm run create_test_db && export NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
     "build": "babel ./server/index.js --out-dir build",
-    "start": "babel-node ./server/index.js",
+    "start": "DEBUG app/debug babel-node ./server/index.js",
     "start:dev": "nodemon --exec babel-node ./server/index.js",
     "coverage": "npm run test && nyc report --reporter=lcov --reporter=text ||"
   },
@@ -41,7 +41,7 @@
     "nyc": "14.1.1"
   },
   "dependencies": {
-    "nodemon": "^1.19.0",
+    "D": "^1.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
@@ -54,6 +54,7 @@
     "code-point-at": "^1.1.0",
     "cors": "^2.8.5",
     "datauri": "^2.0.0",
+    "debug": "^4.1.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
@@ -61,6 +62,7 @@
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
+    "nodemon": "^1.19.0",
     "pg": "^7.11.0",
     "swagger-ui-express": "^4.0.6",
     "uuid": "^3.3.2",

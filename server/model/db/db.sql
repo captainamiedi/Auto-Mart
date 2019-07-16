@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS automart;
-CREATE DATABASE automart;
+-- DROP DATABASE IF EXISTS automart;
+-- CREATE DATABASE automart;
 
-\c automart;
+-- \c automart;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,

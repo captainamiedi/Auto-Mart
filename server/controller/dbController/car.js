@@ -132,31 +132,32 @@ export const view_status_price = async (req, res) => {
   ];
 
   try {
-    console.log(req.query.status, 'get car status');
-    if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
-      const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
-      console.log(viewStatus, 'available...');
-      return carResponseMsg(res, 200, 'successful', viewStatus.rows);
-    }
-    console.log(req.query.status, req.query.min_price, req.query.max_price, 'get car status price');
-    if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
-      const result = await db.query(view, value);
-      console.log(result, 'price.......');
-      return carResponseMsg(res, 200, 'successful', result.rows);
-    }
-    if ((req.query.status === 'available') && (req.query.state === 'new')) {
-      const viewState = await db.query(stateQuery, ['available', 'used']);
-      console.log(viewState, 'state......');
-      return carResponseMsg(res, 200, 'successful', viewState.rows);
-    }
-    console.log(req.authData.is_admin, 'get car status admin');
-    if (req.authData.is_admin === true) {
-      const resultAll = await db.query(query);
-      console.log(resultAll, 'all result.....');
-      return carResponseMsg(res, 200, 'successful', resultAll.rows);
-    } if (req.authData.is_admin === 'false') {
-      return carResponseMsg(res, 404, 'fail', 'you are not an admin');
-    }
+    // console.log(req.query.status, 'get car status');
+    // if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
+    //   const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
+    //   console.log(viewStatus, 'available...');
+    //   return carResponseMsg(res, 200, 'successful', viewStatus.rows);
+    // }
+    //console.log(req.query.status, req.query.min_price,
+    //  req.query.max_price, 'get car status price');
+    // if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
+    //   const result = await db.query(view, value);
+    //   console.log(result, 'price.......');
+    //   return carResponseMsg(res, 200, 'successful', result.rows);
+    // }
+    // if ((req.query.status === 'available') && (req.query.state === 'new')) {
+    //   const viewState = await db.query(stateQuery, ['available', 'used']);
+    //   console.log(viewState, 'state......');
+    //   return carResponseMsg(res, 200, 'successful', viewState.rows);
+    // }
+    // console.log(req.authData.is_admin, 'get car status admin');
+    // if (req.authData.is_admin === true) {
+    const resultAll = await db.query(query);
+    console.log(resultAll, 'all result.....');
+    return carResponseMsg(res, 200, 'successful', resultAll.rows);
+    // } if (req.authData.is_admin === 'false') {
+    // return carResponseMsg(res, 404, 'fail', 'you are not an admin');
+    // }
   } catch (error) { 
     console.log(error, 'get car......');
     return res.status(400).json(error);

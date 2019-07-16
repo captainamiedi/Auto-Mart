@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS automart;
--- CREATE DATABASE automart;
+DROP DATABASE IF EXISTS automart;
+CREATE DATABASE automart;
 
--- \c automart;
+\c automart;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
@@ -28,7 +28,7 @@ CREATE TABLE cars (
 
 CREATE TABLE orders(
     id SERIAL PRIMARY KEY,
-    price INT NOT NULL,
+    amount INT NOT NULL,
     status VARCHAR DEFAULT 'pending',
     buyer INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
     car_id INT NOT NULL REFERENCES cars (id) ON DELETE CASCADE

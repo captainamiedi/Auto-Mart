@@ -29,8 +29,8 @@ export const car_sale = async (req, res) => {
         req.body.model,
         req.body.body_type,
         new Date(),
-        owner_id,
-        // req.authData.id,
+        // owner_id,
+        req.authData.id,
       ];
   
       const result = await db.query(carSaleQuery, values);

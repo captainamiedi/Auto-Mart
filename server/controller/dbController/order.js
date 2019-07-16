@@ -18,7 +18,7 @@ export const purchase = async (req, res) => {
       // foundCar.rows[0].id,
       req.body.car_id,
       req.body.status,
-      req.body.amount,
+      req.body.price,
       req.authData.id,
     ];
     if (!req.authData.id) {
@@ -49,7 +49,7 @@ export const update_price = async (req, res) => {
     // }
     // console.log(response, 'response');
     const updateValue = [
-      req.body.amount,
+      req.body.price,
       // response.rows[0].id,
       req.params.id,
     ];
@@ -63,7 +63,7 @@ export const update_price = async (req, res) => {
     //   old_price_offered: response.rows[0].amount,
     //   new_price_offered: result.rows[0].amount,
     // };
-    return orderResponseMsg(res, 201, 'order successfully updated', result.rows);
+    return orderResponseMsg(res, 200, 'order successfully updated', result.rows);
   } catch (error) {
     console.log(error, 'update error');
     return res.status(400).json(error);

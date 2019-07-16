@@ -28,7 +28,7 @@ CREATE TABLE cars (
 
 CREATE TABLE orders(
     id SERIAL PRIMARY KEY,
-    amount INT NOT NULL,
+    price INT NOT NULL,
     status VARCHAR DEFAULT 'pending',
     buyer INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
     car_id INT NOT NULL REFERENCES cars (id) ON DELETE CASCADE

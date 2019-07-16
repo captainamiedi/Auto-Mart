@@ -27,7 +27,7 @@ export const car_sale = async (req, res) => {
     const values = [
       // uuidv4(),
       req.body.state,
-      image.img_url,
+      req.body.img_url,
       req.body.price,
       req.body.manufacturer,
       req.body.model,

@@ -6,7 +6,7 @@ import express from 'express';
 //import { signup, login } from '../controller/dummy_dbController/user';
 import { signup, login } from '../controller/dbController/user';
 import {
-  car_sale, mark_sold, specific_car, userHistory, delete_car, update_car_price, 
+  car_sale, mark_sold, specific_car, userHistory, delete_car, update_car_price, view_status_price,
 } from '../controller/dbController/car';
 import authCheck from '../utils/auth_checker';
 import { purchase, update_price, userHistoryOrder } from '../controller/dbController/order';

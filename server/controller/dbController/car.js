@@ -7,18 +7,20 @@ import { carResponseMsg } from '../../utils/helpers';
 export const car_sale = async (req, res) => {
   //const selectUser = 'SELECT id FROM users WHERE email = $1';
   // const email = [req.body.email];
-  const carSaleQuery = 'INSERT INTO cars (id, state, price, status, manufacturer, model, body_type, created_date) VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *';
-  const carSaleQueryImg = 'INSERT INTO cars (id, state, image, price, status, manufacturer, model, body_type, created_date) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+  const carSaleQuery = 'INSERT INTO cars (id, state, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+  const carSaleQueryImg = 'INSERT INTO cars (id, state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *';
 
 
   try {
     let image;
+    const {owner_id} = req.authData; 
+    console.log(owner_id, 'owner id.......');
     if (!req.authData.id) {
       return carResponseMsg(res, 401, 'fail', 'user unauthorise');
     }
     if (!req.file) {
       const values = [
-        uuidv4(),
+        // uuidv4(),
         req.body.state,
         // req.body.img_url,
         req.body.price,
@@ -27,6 +29,7 @@ export const car_sale = async (req, res) => {
         req.body.model,
         req.body.body_type,
         new Date(),
+        owner_id,
         // req.authData.id,
       ];
   

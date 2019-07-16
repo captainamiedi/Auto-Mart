@@ -4,7 +4,7 @@
 -- \c automart;
 
 CREATE TABLE users(
-    id UUID PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     email VARCHAR NOT NULL,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE cars (
-    id UUID PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     created_date TIMESTAMP,
     state VARCHAR NOT NULL,
     image VARCHAR,
@@ -23,21 +23,21 @@ CREATE TABLE cars (
     manufacturer VARCHAR NOT NULL ,
     model VARCHAR NOT NULL,
     body_type VARCHAR NOT NULL,
-    owner_id UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE
+    owner_id INT NOT NULL REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE orders(
-    id UUID PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     amount INT NOT NULL,
     status VARCHAR DEFAULT 'pending',
-    buyer UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-    car_id UUID NOT NULL REFERENCES cars (id) ON DELETE CASCADE
+    buyer INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    car_id INT NOT NULL REFERENCES cars (id) ON DELETE CASCADE
 );
 
 CREATE TABLE flags (
-    id UUID PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     created_on TIMESTAMP,
     reason VARCHAR NOT NULL,
     description VARCHAR NOT NULL,
-    car_id UUID NOT NULL REFERENCES cars (id) ON DELETE CASCADE
+    car_id INT NOT NULL REFERENCES cars (id) ON DELETE CASCADE
 );

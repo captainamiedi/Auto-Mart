@@ -13,54 +13,33 @@ export const car_sale = async (req, res) => {
 
   try {
     let image;
-    // const owner_id = {req.authData}; 
-    // console.log(owner_id, 'owner id.......');
     if (!req.authData.id) {
       return carResponseMsg(res, 401, 'fail', 'user unauthorise');
-    }
-    if (!req.file) {
-      const values = [
-        // uuidv4(),
-        req.body.state,
-        // req.body.img_url,
-        req.body.price,
-        req.body.status,
-        req.body.manufacturer,
-        req.body.model,
-        req.body.body_type,
-        new Date(),
-        // owner_id,
-        req.authData.id,
-      ];
-  
-      const result = await db.query(carSaleQuery, values);
-      console.log(result.rows, 'result...');
-      console.log(req.body, 'car body ........');
-      return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
     }
     if (req.file) {
       const file = dataUri(req).content;
       image = await uploader.upload(file);
-      const valuesImg = [
-        // uuidv4(),
-        req.body.state,
-        image.img_url,
-        req.body.price,
-        req.body.status,
-        req.body.manufacturer,
-        req.body.model,
-        req.body.body_type,
-        new Date(),
-        req.authData.id,
-      ];
-  
-      const result = await db.query(carSaleQueryImg, valuesImg);
-      console.log(result.rows, 'result...');
-      console.log(req.body, 'car body ........222222222');
-      return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
     }
 
     console.log(image, 'image....');
+    // console.log(image, 'image....');
+
+    const values = [
+      // uuidv4(),
+      req.body.state,
+      image.secure_url,
+      req.body.price,
+      req.body.manufacturer,
+      req.body.model,
+      req.body.body_type,
+      new Date(),
+      req.authData.id,
+    ];
+    console.log(req.body, 'car body......');
+    const result = await db.query(carSaleQuery, values);
+    console.log(result.rows, 'result...');
+    return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
+    // }
   } catch (error) {
     console.log(error, 'error---===:::::');
     return res.status(400).json(error);

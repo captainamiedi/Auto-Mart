@@ -65,24 +65,24 @@ export const mark_sold = async (req, res) => {
   }
 };
 
-// export const update_car_price = async (req, res) => {
-//const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 AND owner_id = $3 RETURNING *';
-//   const values = [
-//     req.body.price,
-//     req.params.id,
-//     req.authData.id,
-//   ];
-//   try {
-//     console.log(req.body, 'updated price');
-//     console.log(values);
-//     const result = await db.query(updatePriceQuery, values);
-//     // console.log(result.rows, 'contoller resuult........');
-//     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
-//   } catch (error) {
-//     console.log(error, 'controller.........');
-//     return res.status(400).json(error);
-//   }
-// };
+export const update_car_price = async (req, res) => {
+  const updatePriceQuery = 'UPDATE cars SET price = $1 WHERE id = $2 AND owner_id = $3 RETURNING *';
+  const values = [
+    req.body.price,
+    req.params.id,
+    req.authData.id,
+  ];
+  try {
+    console.log(req.body, 'updated price');
+    console.log(values);
+    const result = await db.query(updatePriceQuery, values);
+    // console.log(result.rows, 'contoller resuult........');
+    return carResponseMsg(res, 200, 'successful update', result.rows[0]);
+  } catch (error) {
+    console.log(error, 'controller.........');
+    return res.status(400).json(error);
+  }
+};
 
 export const specific_car = async (req, res) => {
   const query = 'SELECT * FROM cars WHERE id = $1';
@@ -120,46 +120,44 @@ export const specific_car = async (req, res) => {
 //   }
 // };
 
-// export const view_status_price = async (req, res) => {
-//   const query = 'SELECT * FROM cars ORDER BY created_date DESC LIMIT 10';
-//const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3 
-// ORDER BY created_date DESC LIMIT 10';
-//const viewStatusQuery = 'SELECT * FROM cars WHERE status =$1 ORDER BY created_date DESC LIMIT 10';
-//const stateQuery = 'SELECT * FROM cars WHERE status = $1 AND state = $2 ORDER BY created_date DESC
-//  LIMIT 10';
-//   const value = [
-//     req.query.status,
-//     req.query.min_price,
-//     req.query.max_price,
-//   ];
+export const view_status_price = async (req, res) => {
+  const query = 'SELECT * FROM cars ORDER BY created_date DESC LIMIT 10';
+  const view = 'SELECT * FROM cars WHERE status =$1 AND price  BETWEEN $2 AND $3 ORDER BY created_date DESC LIMIT 10';
+  const viewStatusQuery = 'SELECT * FROM cars WHERE status =$1 ORDER BY created_date DESC LIMIT 10';
+  const stateQuery = 'SELECT * FROM cars WHERE status = $1 AND state = $2 ORDER BY created_date DESC LIMIT 10';
+  const value = [
+    req.query.status,
+    req.query.min_price,
+    req.query.max_price,
+  ];
 
-//   try {
-//     console.log(req.query.status, 'get car status');
-//     if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
-//       const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
-//       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
-//     }
-//     console.log(req.query.status, req.query.min_price, 'get car status price');
-//     if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
-//       const result = await db.query(view, value);
-//       return carResponseMsg(res, 200, 'successful', result.rows);
-//     }
-//     if ((req.query.status === 'available') && (req.query.state === 'new')) {
-//       const viewState = await db.query(stateQuery, ['available', 'used']);
-//       return carResponseMsg(res, 200, 'successful', viewState.rows);
-//     }
-//     console.log(req.authData.is_admin, 'get car status admin');
-//     if (req.authData.is_admin === true) {
-//       const resultAll = await db.query(query);
-//       return carResponseMsg(res, 200, 'successful', resultAll.rows);
-//     } if (req.authData.is_admin === 'false') {
-//       return carResponseMsg(res, 404, 'fail', 'you are not an admin');
-//     }
-//   } catch (error) { 
-//     console.log(error, 'get car......');
-//     return res.status(400).json(error);
-//   }
-// };
+  try {
+    console.log(req.query.status, 'get car status');
+    if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
+      const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
+      return carResponseMsg(res, 200, 'successful', viewStatus.rows);
+    }
+    console.log(req.query.status, req.query.min_price, 'get car status price');
+    if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
+      const result = await db.query(view, value);
+      return carResponseMsg(res, 200, 'successful', result.rows);
+    }
+    if ((req.query.status === 'available') && (req.query.state === 'new')) {
+      const viewState = await db.query(stateQuery, ['available', 'used']);
+      return carResponseMsg(res, 200, 'successful', viewState.rows);
+    }
+    console.log(req.authData.is_admin, 'get car status admin');
+    if (req.authData.is_admin === true) {
+      const resultAll = await db.query(query);
+      return carResponseMsg(res, 200, 'successful', resultAll.rows);
+    } if (req.authData.is_admin === 'false') {
+      return carResponseMsg(res, 404, 'fail', 'you are not an admin');
+    }
+  } catch (error) { 
+    console.log(error, 'get car......');
+    return res.status(400).json(error);
+  }
+};
 
 export const view_all = async (req, res) => {
   const query = 'SELECT * FROM cars';

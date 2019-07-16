@@ -22,8 +22,8 @@ import { multerUploads } from '../utils/imageUpload';
 
 const router = express.Router();
 
-// router.post('/order', authCheck, purchase);
-router.post('/car', multerUploads, authCheck, car_sale);
+router.post('/order', authCheck, purchase);
+// router.post('/car', multerUploads, authCheck, car_sale);
 // router.patch('/order/:order-id/price', update_price);
 // router.patch('/car/:id/status', authCheck, mark_sold);
 // router.patch('/car/:id/price', authCheck, update_car_price);

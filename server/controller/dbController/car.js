@@ -138,7 +138,7 @@ export const view_status_price = async (req, res) => {
       console.log(viewStatus, 'available...');
       return carResponseMsg(res, 200, 'successful', viewStatus.rows);
     }
-    console.log(req.query.status, req.query.min_price, 'get car status price');
+    console.log(req.query.status, req.query.min_price, req.query.max_price, 'get car status price');
     if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
       const result = await db.query(view, value);
       console.log(result, 'price.......');

@@ -19,7 +19,7 @@ CREATE TABLE cars (
     state VARCHAR NOT NULL,
     image VARCHAR,
     status VARCHAR DEFAULT 'available',
-    price INTEGER NOT NULL,
+    price INTEGER,
     manufacturer VARCHAR NOT NULL ,
     model VARCHAR NOT NULL,
     body_type VARCHAR NOT NULL,

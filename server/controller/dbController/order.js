@@ -54,7 +54,7 @@ export const update_price = async (req, res) => {
       req.params.id,
     ];
     const result = await db.query(updateQuery, updateValue);
-    console.log(result);
+    console.log(result, 'update order......');
     const data = {
       id: result.rows[0].id,
       car_id: result.rows[0].car_id,

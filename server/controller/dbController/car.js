@@ -99,6 +99,9 @@ export const specific_car = async (req, res) => {
     // } 
     const result = await db.query(query, values);
     console.log(result.rows, 'result oooooooooo');
+    if (!result.rows) {
+      return carResponseMsg(res, 404, 'car not found');
+    }
     return carResponseMsg(res, 200, 'successful', result.rows[0]);
   } catch (error) {
     console.log(error, 'controller specific.....');

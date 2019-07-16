@@ -18,7 +18,7 @@ export const purchase = async (req, res) => {
       // foundCar.rows[0].id,
       req.body.car_id,
       req.body.status,
-      req.body.price,
+      req.body.amount,
       req.authData.id,
     ];
     if (!req.authData.id) {
@@ -39,7 +39,7 @@ export const purchase = async (req, res) => {
 export const update_price = async (req, res) => {
   // const getOrderQuery = 'SELECT id, price FROM orders
   //  WHERE id = $1 AND status = $2 AND buyer = $3';
-  const updateQuery = 'UPDATE orders SET amount = $1 WHERE id = $2 RETURNING *';
+  const updateQuery = 'UPDATE orders SET price = $1 WHERE id = $2 RETURNING *';
 
   try {
     console.log(req.authData.id, 'working ......');

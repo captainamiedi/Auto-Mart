@@ -30,7 +30,7 @@ router.patch('/car/:id/price', authCheck, update_car_price);
 router.post('/auth/signup', signup);
 router.post('/auth/signin', login);
 router.get('/car/:id', authCheck, specific_car);
-// router.get('/car', authCheck, view_status_price);
+router.get('/car', authCheck, view_status_price);
 // router.get('/user', authCheck, userHistory);
 // router.get('/order/user', authCheck, userHistoryOrder);
 // router.post('/flag', authCheck, flag);

@@ -4,7 +4,6 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
-import debug from 'debug';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import orderRouter from './routes/order';

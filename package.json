@@ -8,7 +8,7 @@
     "create_test_db": "PGPASSWORD=postgres psql -U postgres -f ./server/model/db/db_test.sql",
     "test": "npm run create_test_db && export NODE_ENV=test&& mocha --require babel-register --require babel-polyfill --env test ./server/test/db_Test/*.js --exit",
     "build": "babel ./server/index.js --out-dir build",
-    "start": "DEBUG app/debug babel-node ./server/index.js",
+    "start": "babel-node ./server/index.js",
     "start:dev": "nodemon --exec babel-node ./server/index.js",
     "coverage": "npm run test && nyc report --reporter=lcov --reporter=text ||"
   },

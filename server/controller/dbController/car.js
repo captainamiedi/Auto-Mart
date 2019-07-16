@@ -8,6 +8,7 @@ export const car_sale = async (req, res) => {
   //const selectUser = 'SELECT id FROM users WHERE email = $1';
   // const email = [req.body.email];
   const carSaleQuery = 'INSERT INTO cars (id, state, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+  const carSaleQueryImg = 'INSERT INTO cars (id, state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *';
 
 
   try {
@@ -37,6 +38,23 @@ export const car_sale = async (req, res) => {
     if (req.file) {
       const file = dataUri(req).content;
       image = await uploader.upload(file);
+      const valuesImg = [
+        uuidv4(),
+        req.body.state,
+        req.body.img_url,
+        req.body.price,
+        req.body.status,
+        req.body.manufacturer,
+        req.body.model,
+        req.body.body_type,
+        new Date(),
+        req.authData.id,
+      ];
+  
+      const result = await db.query(carSaleQueryImg, valuesImg);
+      console.log(result.rows, 'result...');
+      console.log(req.body, 'car body ........222222222');
+      return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
     }
 
     console.log(image, 'image....');

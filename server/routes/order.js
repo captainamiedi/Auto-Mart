@@ -26,7 +26,7 @@ router.post('/order', authCheck, purchase);
 router.post('/car', multerUploads, authCheck, car_sale);
 // router.patch('/order/:order-id/price', update_price);
 router.patch('/car/:id/status', authCheck, mark_sold);
-router.patch('/car/:id/price', authCheck, update_car_price);
+router.patch('/car/:id/price', authCheck, timeout.set(7000), update_car_price);
 router.post('/auth/signup', signup);
 router.post('/auth/signin', login);
 router.get('/car/:id', authCheck, specific_car);
@@ -34,6 +34,6 @@ router.get('/car', authCheck, view_status_price);
 // router.get('/user', authCheck, userHistory);
 // router.get('/order/user', authCheck, userHistoryOrder);
 // router.post('/flag', authCheck, flag);
-router.delete('/car/:id', authCheck, delete_car);
+router.delete('/car/:id', authCheck, timeout.set(7000), delete_car);
 
 export default router;

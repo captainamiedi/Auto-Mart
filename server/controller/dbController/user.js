@@ -9,7 +9,7 @@ dotenv.config();
 //eslint-disable-next-line import/prefer-default-export
 export const signup = async (req, res) => {
   const getUserQuery = 'SELECT * FROM users WHERE email = $1';
-  const createUserQuery = 'INSERT INTO users( first_name, last_name, email, password, address, is_admin) VALUES($1, $2, $3, $4, $5, $6) returning *';
+  const createUserQuery = 'INSERT INTO users(id, first_name, last_name, email, password, address, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) returning *';
   const email = [req.body.email];
 
 
@@ -21,7 +21,7 @@ export const signup = async (req, res) => {
     }
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = [
-      // uuidv4(),
+      uuidv4(),
       req.body.first_name,
       req.body.last_name,
       req.body.email,

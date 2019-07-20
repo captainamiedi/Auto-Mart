@@ -17,10 +17,7 @@ dotenv.config();
 
 const app = express();
 
-const options = {
-  timeout: 20000,
-  disable: ['write', 'setHeaders', 'send', 'json', 'end'],
-};
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,7 +25,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(cors());
 app.use('*', cloudinaryConfig);
-app.use(timeout.handler(options));
+
 // routes handling
 //app.use('/buyer', buyerRoutes);
 app.use('/', orderRouter);

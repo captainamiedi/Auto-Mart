@@ -7,8 +7,7 @@ import { carResponseMsg } from '../../utils/helpers';
 export const car_sale = async (req, res) => {
   //const selectUser = 'SELECT id FROM users WHERE email = $1';
   // const email = [req.body.email];
-  const carSaleQuery = 'INSERT INTO cars (state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
-  const carSaleQueryImg = 'INSERT INTO cars (state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *';
+  const carSaleQuery = 'INSERT INTO cars (id, state, image, price, status, manufacturer, model, body_type, created_date, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *';
 
 
   try {
@@ -22,11 +21,11 @@ export const car_sale = async (req, res) => {
     }
 
     console.log(image, 'image....');
-    // console.log(image, 'image....');
 
     const values = [
+      uuidv4(),
       req.body.state,
-      req.body.img_url,
+      image.secure_url,
       req.body.price,
       req.body.status,
       req.body.manufacturer,
@@ -35,9 +34,9 @@ export const car_sale = async (req, res) => {
       new Date(),
       req.authData.id,
     ];
-    console.log(req.body, 'car body......');
+    // console.log(req.body, 'car body......');
     const result = await db.query(carSaleQuery, values);
-    console.log(result.rows, 'result...');
+    // console.log(result.rows, 'result...');
     return carResponseMsg(res, 201, 'successfully created', result.rows[0]);
     // }
   } catch (error) {
@@ -54,13 +53,13 @@ export const mark_sold = async (req, res) => {
     req.params.id,
   ];
   try {
-    console.log(req.body, 'marked sold');
-    console.log(values);
+    // console.log(req.body, 'marked sold');
+    // console.log(values);
     const result = await db.query(updateMarkQuery, values);
-    console.log(result.rows, 'mark_sold.........');
+    // console.log(result.rows, 'mark_sold.........');
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
-    console.log(error, 'contolller.......');
+    // console.log(error, 'contolller.......');
     return res.status(400).json(error);
   }
 };
@@ -73,13 +72,13 @@ export const update_car_price = async (req, res) => {
     req.authData.id,
   ];
   try {
-    console.log(req.body, 'updated price');
-    console.log(values);
+    // console.log(req.body, 'updated price');
+    // console.log(values);
     const result = await db.query(updatePriceQuery, values);
-    console.log(result.rows, 'contoller resuult........');
+    // console.log(result.rows, 'contoller resuult........');
     return carResponseMsg(res, 200, 'successful update', result.rows[0]);
   } catch (error) {
-    console.log(error, 'controller.........');
+    // console.log(error, 'controller.........');
     return res.status(400).json(error);
   }
 };
@@ -98,13 +97,13 @@ export const specific_car = async (req, res) => {
     //   return carResponseMsg(res, 200, 'successful', viewStatus.rows[0]);
     // } 
     const result = await db.query(query, values);
-    console.log(result.rows, 'result oooooooooo');
+    // console.log(result.rows, 'result oooooooooo');
     if (!result.rows.length) {
       return carResponseMsg(res, 404, 'car not found');
     }
     return carResponseMsg(res, 200, 'successful', result.rows[0]);
   } catch (error) {
-    console.log(error, 'controller specific.....');
+    // console.log(error, 'controller specific.....');
     return res.status(400).json(error);
   }
 };
@@ -135,31 +134,27 @@ export const view_status_price = async (req, res) => {
   ];
 
   try {
-    // console.log(req.query.status, 'get car status');
-    // if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
-    //   const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
-    //   console.log(viewStatus, 'available...');
-    //   return carResponseMsg(res, 200, 'successful', viewStatus.rows);
-    // }
-    //console.log(req.query.status, req.query.min_price,
-    //  req.query.max_price, 'get car status price');
-    // if ((req.query.status) && (req.query.min_price) && (!req.query.max_price)) {
-    //   const result = await db.query(view, value);
-    //   console.log(result, 'price.......');
-    //   return carResponseMsg(res, 200, 'successful', result.rows);
-    // }
-    // if ((req.query.status === 'available') && (req.query.state === 'new')) {
-    //   const viewState = await db.query(stateQuery, ['available', 'used']);
-    //   console.log(viewState, 'state......');
-    //   return carResponseMsg(res, 200, 'successful', viewState.rows);
-    // }
-    // console.log(req.authData.is_admin, 'get car status admin');
-    // if (req.authData.is_admin === true) {
-    const resultAll = await db.query(query);
-    console.log(resultAll.rows, 'all result.....');
-    return carResponseMsg(res, 200, 'successful', resultAll.rows);
-    // } if (req.authData.is_admin === 'false') {
-    // return carResponseMsg(res, 404, 'fail', 'you are not an admin');
+    console.log(req.query.status);
+    if ((req.query.status) && (!req.query.min_price) && (!req.query.max_price)) {
+      const viewStatus = await db.query(viewStatusQuery, [req.query.status]);
+      return carResponseMsg(res, 200, 'successful', viewStatus.rows);
+    }
+    if ((req.query.status) && (req.query.min_price) && (req.query.max_price)) {
+      const result = await db.query(view, value);
+      console.log(value);
+      return carResponseMsg(res, 200, 'successful', result.rows);
+    }
+    if ((req.query.status === 'available') && (req.query.state === 'new')) {
+      const viewState = await db.query(stateQuery, ['available', 'used']);
+      return carResponseMsg(res, 200, 'successful', viewState.rows);
+    }
+    if (req.authData.is_admin === true) {
+      const resultAll = await db.query(query); 
+      return carResponseMsg(res, 200, 'successful', resultAll.rows);
+    } 
+    if (req.authData.is_admin === false) {
+      return carResponseMsg(res, 404, 'fail', 'you are not an admin');
+    }
     // }
   } catch (error) { 
     console.log(error, 'get car......');
@@ -182,11 +177,16 @@ export const delete_car = async (req, res) => {
   const value = [req.params.id];
 
   try {
-    const result = await db.query(query, value);
-    console.log(result, 'delete car.....');
-    return carResponseMsg(res, 200, 'Car Ads successful deleted');
+    if (req.authData.is_admin === true) {
+      const result = await db.query(query, value);
+      // console.log(result, 'delete car.....');
+      return carResponseMsg(res, 200, 'Car Ads successful deleted');
+    }
+    if (req.authData.is_admin === false) {
+      return carResponseMsg(res, 404, 'fail', 'you are not an admin');
+    }
   } catch (error) {
-    console.log(error, 'delete car .....');
+    // console.log(error, 'delete car .....');
     return res.status(400).json(error);
   }
 };

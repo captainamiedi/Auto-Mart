@@ -29,34 +29,3 @@ export const flagResponseMsg = (res, status, message, order) => res.status(statu
   message,
   order,
 });
-
-
-// const storage = multer.diskStorage({
-//   filename: (req, file, next) => {
-//     next(null, `${file.originalname}`);
-//   },
-// });
-
-// const fileFilter = (req, file, next) => {
-//   const image = file.mimetype === 'image/jpeg' || file.mimetype === 'image/png';
-//   if (!file) {
-//     next();
-//   }
-//   if (image) {
-//     next(null, true);
-//   } else {
-//     const error = new Error('file type not supported');
-//     error.status = 400;
-//     next(error, false);
-//   }
-// };
-
-// export const upload = multer({ storage, limits: 1024 * 1024 * 5, fileFilter });
-
-// export const profileImg = multer({ storage, limits: 1024 * 1024 * 2, fileFilter });
-
-// export const cloudinaryData = {
-//   cloud_name: process.env.CLOUDINARY_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// };

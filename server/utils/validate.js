@@ -129,8 +129,9 @@ export const carSaleValidator = (req, res, next) => {
 };
 
 export const updateValidator = (req, res, next) => {
-  if (!req.body.status || !req.body.status.trim()) {
-    return responseMsg(res, 400, 'fail', 'status is required');
+  const { amount } = req.body;
+  if (!amount || !amount.trim()) {
+    return responseMsg(res, 400, 'fail', 'price is required');
   }
   next();
 };

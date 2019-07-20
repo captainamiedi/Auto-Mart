@@ -4,17 +4,17 @@ import { orderResponseMsg } from '../../utils/helpers';
 
 
 export const purchase = async (req, res) => {
-  // const getPriceQuery = 'SELECT id, price FROM cars WHERE id = $1';
-  // const valueId = [req.body.car_id];
-  const createOrderQuery = 'INSERT INTO orders (car_id, status, amount, buyer) VALUES ($1, $2, $3, $4) RETURNING *';
+  const getPriceQuery = 'SELECT id, price FROM cars WHERE id = $1';
+  const valueId = [req.body.car_id];
+  const createOrderQuery = 'INSERT INTO orders (id, car_id, status, amount, buyer) VALUES ($1, $2, $3, $4, $5) RETURNING *';
 
 
   try {
-    // const foundCar = await db.query(getPriceQuery, valueId);
-    // console.log(foundCar, 'oim here.......');
-    // console.log(foundCar.rows[0].price);
+    const foundCar = await db.query(getPriceQuery, valueId);
+    console.log(foundCar, 'oim here.......');
+    console.log(foundCar.rows[0].price);
     const values = [
-      // uuidv4(),
+      uuidv4(),
       // foundCar.rows[0].id,
       req.body.car_id,
       req.body.status,
@@ -24,11 +24,11 @@ export const purchase = async (req, res) => {
     if (!req.authData.id) {
       return orderResponseMsg(res, 401, 'fail', 'user unauthorise');
     }
-    console.log(req.authData.id, 'working......');
-    console.log(values);
-    console.log(req.body, 'orders body..........');
+    // console.log(req.authData.id, 'working......');
+    // console.log(values);
+    // console.log(req.body, 'orders body..........');
     const result = await db.query(createOrderQuery, values);
-    console.log(result.rows, 'order result');
+    // console.log(result.rows, 'order result');
     return orderResponseMsg(res, 201, 'order successful', result.rows[0]);
   } catch (error) {
     console.log(error, 'order .......');
@@ -37,33 +37,33 @@ export const purchase = async (req, res) => {
 };
 
 export const update_price = async (req, res) => {
-  // const getOrderQuery = 'SELECT id, price FROM orders
-  //  WHERE id = $1 AND status = $2 AND buyer = $3';
-  const updateQuery = 'UPDATE orders SET price = $1 WHERE id = $2 RETURNING *';
+  const getOrderQuery = 'SELECT id, amount FROM orders WHERE id = $1 AND status = $2 AND buyer = $3';
+  const updateQuery = 'UPDATE orders SET amount = $1 WHERE id = $2 RETURNING *';
 
   try {
     console.log(req.authData.id, 'working ......');
-    // const response = await db.query(getOrderQuery, [req.params.id, 'pending', req.authData.id]);
-    // if (!response) {
-    //   return orderResponseMsg(res, 404, 'order not found');
-    // }
-    // console.log(response, 'response');
+    const response = await db.query(getOrderQuery, [req.params.id, 'pending', req.authData.id]);
+    if (!response) {
+      return orderResponseMsg(res, 404, 'order not found');
+    }
+    // const {id} = response.rows[0];
+    console.log(response.rows[0].id, 'response');
     const updateValue = [
-      req.body.price,
+      req.body.amount,
       // response.rows[0].id,
       req.params.id,
     ];
     console.log(req.body, 'order update body.....');
     const result = await db.query(updateQuery, updateValue);
-    console.log(result.rows, 'update order......');
-    // const data = {
-    //   id: result.rows[0].id,
-    //   car_id: result.rows[0].car_id,
-    //   status: result.rows[0].status,
-    //   old_price_offered: response.rows[0].amount,
-    //   new_price_offered: result.rows[0].amount,
-    // };
-    return orderResponseMsg(res, 200, 'order successfully updated', result.rows);
+    // console.log(result.rows, 'update order......');
+    const data = {
+      id: result.rows[0].id,
+      car_id: result.rows[0].car_id,
+      status: result.rows[0].status,
+      old_price_offered: response.rows[0].amount,
+      new_price_offered: result.rows[0].amount,
+    };
+    return orderResponseMsg(res, 200, 'order successfully updated', data);
   } catch (error) {
     console.log(error, 'update error');
     return res.status(400).json(error);

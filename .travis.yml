@@ -13,9 +13,9 @@ env:
   - NODE_ENV=test
 
 git: 
-  depth: 40
+  depth: 50
   quiet: true
-  
+
 before_script:
   - psql -c 'drop database if exists db_test;' -U postgres
    -psql -c 'create database db_test;' -U postgres
